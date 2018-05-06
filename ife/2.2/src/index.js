@@ -40,13 +40,8 @@ var MyApp = san.defineComponent({
 		if(this.data.get('persons['+ index +'].operate')==='删除')
 			this.data.removeAt("persons",index);
 		else{
-			var exa = prompt("请输入审核结果(合格or不合格)");
-			if(exa === "合格" || exa === "不合格"){
-				this.data.set('persons['+ index +'].operate',"删除");
-				this.data.set('persons['+ index +'].examine',exa);
-			}else{
-				alert("输入无效!");
-			}
+			this.data.set('persons['+ index +'].operate',"删除");
+			this.data.set('persons['+ index +'].examine',"合格");
 		}
 	}
 });

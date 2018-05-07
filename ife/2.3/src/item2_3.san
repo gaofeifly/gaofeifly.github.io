@@ -1,0 +1,45 @@
+<template>
+	<!-- style方式 -->
+	<!-- <div id="block" style="background:{{flag ? 'blue' : 'red'}};width:100px;height:100px;" on-click="toggle()"></div> -->
+	<!-- class方式 -->
+	<div id="block" class="{{className}}" on-click="toggle()"></div>
+</template>
+
+<script>
+	//style方式
+	// export default{
+	// 	initData:function(){
+	// 		return {
+	// 			flag:true
+	// 		};
+	// 	},
+	// 	toggle:function(){
+	// 		this.data.set("flag",!this.data.get("flag"));
+	// 	}
+	// }
+	//class方式
+	export default{
+		initData:function(){
+			return {
+				className:"one"
+			};
+		},
+		toggle:function(){
+			this.data.set("className",this.data.get("className") === "one" ?　"two" : "one");
+		}
+	}
+</script>
+
+<style>
+	#block{
+		width: 100px;
+		height: 100px;
+	}
+	.one{
+		background-color: blue;
+	}
+	.two{
+		background-color: red;
+	}
+</style>
+

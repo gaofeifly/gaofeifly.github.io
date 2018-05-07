@@ -1,0 +1,53 @@
+.container{
+	margin:0 auto;
+	width: 200px;
+	height: 200px;
+	background-color: #eee;
+	text-align: center;
+	padding-top: 20px;
+}
+#text{
+	margin: 0 auto;
+	font-size: 30px;
+	width:150px;
+	-webkit-transition:color 0.6s; /* Safari and Chrome */
+}
+.text1{
+	color: black;
+}
+.text2{
+	color: blue;
+}
+
+#line{
+	margin:0 auto;
+	-webkit-transition: width 0.6s;
+	border:1px solid blue;
+}
+.line1{
+	width:0%;
+}
+.line2{
+	width:100%;
+}
+#but{
+	margin-top:10px;
+	width: 100px;
+	height: 40px;
+	border-radius: 5px;
+	background-color: white;
+}
+.but1{
+	-webkit-animation:butAnimation 0.5s 1;
+}
+@-webkit-keyframes butAnimation{
+	0%{
+		background-color: white;
+	}
+	50%{
+		background-color: gray;
+	}
+	100%{
+		background-color: white;
+	}
+}

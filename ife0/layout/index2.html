@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		div{
+			line-height: 150px;
+			text-align: center;
+			font-size: 25px;
+			font-weight: bold;
+		}
+		body{
+			overflow-x: hidden;
+		}
+		.f{
+			display: flex;
+			margin-bottom:15px;
+		}
+		.b1one{
+			flex:none;
+			width: 30%;
+			background-color: #ccc;
+			height: 150px;
+		}
+		.b1two{
+			width: 70%;
+			flex:none;
+			background-color: #777;
+			height: 150px;
+		}
+		.b2one{
+			width: 200px;
+			height: 150px;
+			background-color: #777;
+			flex: none;
+		}
+		.b2two{
+			flex:1;
+			height: 150px;
+			background-color: #ccc;
+		}
+		.b3two{
+			width: 200px;
+			height: 150px;
+			background-color: #777; 
+			flex:none;
+		}
+		.b3one{
+			flex: 1;
+			height: 150px;
+			background-color: #ccc;
+		}
+		.b4one{
+			height: 150px;
+			width: 200px;
+			background-color: #777;
+			flex: none;
+		}
+		.b4two{
+			height: 150px;
+			background-color: #ccc;
+			flex: 1;
+		}
+		.b4three{
+			height: 150px;
+			width: 200px;
+			background-color: #777;
+			flex: none;
+		}
+		.b5one{
+			height: 150px;
+			width: 200px;
+			background-color: #777;
+			flex: none;
+		}
+		.b5three{
+			height: 150px;
+			background-color: #777;
+			flex: 1;
+		}
+		.b5two{
+			height: 150px;
+			width: 200px;
+			background-color: #ccc;
+			flex: none;
+		}
+		
+	</style>
+	<meta charset="utf-8">
+	<title>flexbox实现</title>
+</head>
+<body>
+	<div>Flexbox实现</div>
+	<div class="flexbox">	
+		
+		<div class="f">
+		<div class="b1one">30%</div>
+		<div class="b1two">70%</div>
+		</div>
+
+		<div class="f">
+		<div class="b2one">左侧固定200px</div>
+		<div class="b2two">根据窗口自适应</div>
+		</div>
+		
+		<div class="f">
+		<div class="b3one">根据窗口自适应</div>
+		<div class="b3two">右侧固定200px</div>
+		</div>
+		
+		<div class="f">
+		<div class="b4one">左侧固定200px</div>
+		<div class="b4two">根据窗口自适应</div>
+		<div class="b4three">右侧固定200px</div>
+		</div>
+
+		<div class="f">
+		<div class="b5one">左侧固定200px</div>
+		<div class="b5two">中间固定200px</div>
+		<div class="b5three">根据窗口自适应</div>		
+		</div>
+	</div>	
+	<p>感觉Flexbox是三种实现方式中最好用的~<p>
+</body>
+</html>

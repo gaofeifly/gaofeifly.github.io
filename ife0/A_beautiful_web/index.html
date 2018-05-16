@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>A_Beautiful_Website</title>
+	<style>
+		body{
+			margin:auto;
+		}
+		/*content1*/
+		.content1{
+			width: 100%;
+			text-align: center;
+			background-image:url(images/images/前端学院设计图_01.png);
+			color: white;
+			height: 600px;
+		}
+		.opacityDiv{
+			background-color: rgba(0,0,0,0.5);
+			width: 100%;
+			height: 600px;
+		}
+		.sign{
+			margin: 0 auto;
+			border: 1px solid rgba(255,255,255,0.3);
+			width: 60%;
+			padding: 50px;
+			border-radius: 2px;
+		}
+		.sign input[type="text"],input[type="password"]{
+			width: 200px;
+			height: 30px;
+			border: 1px solid rgba(255,255,255,0.3);
+			background-color:rgba(0,0,0,0); 
+			border-radius: 2px;
+		}
+		.signupBut{
+			background-color: white;
+			color: black;
+			height: 35px;
+			width: 80px;
+			border-radius: 2px;
+			border: 0px;
+		}
+		.hello{
+			font-size: 2em;
+		}
+		.sentence{
+			font-size: 0.8em;
+			opacity: 0.6;
+		}
+		.sen1{
+			font-weight: bold;
+			font-size: 1.5em;
+		}
+		.sen2{
+			font-size: 1em;
+			opacity: 0.6;
+		}
+		/*content2*/
+		.content2{
+			width: 100%;
+			height: 600px;
+		}
+		.content2 img{
+			width: 50px;
+			height: 50px;
+		}
+		.div1,.div2,.div3,.div4{
+			width: 30%;
+			height: 100px;
+			position: absolute;
+		}
+		.divContainer{
+			margin-top: 100px;
+			position: relative;
+		}
+		.div1{
+			left:100px;
+			top:0;
+		}
+		.div2{
+			left:700px;
+			top:0;
+		}
+		.div3{
+			left:100px;
+			top:150px;
+		}
+		.div4{
+			left:700px;
+			top:150px;
+		}
+		.title1{
+			font-weight: bold;
+			position: relative;
+			left: 20px;
+			top:-40px;
+		}
+		.title2{
+			position: relative;
+			left: 70px;
+			top:-20px;
+		}
+		/*content3*/
+		.content3{
+			width: 100%;
+			height: 600px;
+			background-image: url(images/images/前端学院设计图_03.png);
+			background-size: 100% 600px;
+		}
+		.content3left{
+			position: relative;
+		}
+		.content3left span:nth-of-type(1){
+			color: white;
+			position: absolute;
+			top:100px;
+			left: 200px;
+			display: block;
+			width: 300px;
+			font-size: 2em;
+		}
+		.content3left span:nth-of-type(2){
+			font-size: 1em;
+			color: #aaa;
+			position: absolute;
+			top:250px;
+			left: 200px;
+			display: block;
+			width: 300px;
+		}
+		.content3left input:nth-of-type(1){
+			border:0px;
+			background-color: white;
+			color: #000;
+			width: 200px;
+			height: 50px;
+			border-radius: 2px;
+			position: absolute;
+			left: 200px;
+			top: 400px;
+		}
+		.content3left input:nth-of-type(2){
+			border:1px solid #aaa;
+			background-color: rgba(0,0,0,0);
+			color: #fff;
+			width: 200px;
+			height: 50px;
+			border-radius: 2px;
+			position: absolute;
+			left: 450px;
+			top: 400px;
+		}
+		/*content4*/
+		.content4{
+			padding-top:50px;
+			width: 100%;
+			height: 300px;
+		}
+		.column{
+			display: flex;
+			width: 70%;
+			margin: 0 auto;
+			justify-content: space-between;
+			margin-top:50px;
+		}
+		.content4 .title{
+			width: 35%;
+			margin: auto;
+			font-size: 2em;
+		}
+		.content4div1,.content4div2,.content4div3{
+			width: 25%;
+			height: 300px;
+			flex: none;
+			text-align: center;
+			color: #777;
+		}
+		.content5{
+			width: 100%;
+			height: 400px;
+			margin-top: 100px;
+			border-top:1px solid #aaa;
+			padding-top:50px;
+		}
+		.content5 div{
+			position: relative;
+			margin: 0 auto;
+			width: 70%;
+			height: 230px;/*
+			border: 1px solid #000;*/
+		}
+		.content5 div:nth-of-type(1){
+			margin-bottom: 30px;
+		}
+		.content5 img{
+			width: 35%;
+			height: 200px;
+			position: absolute;
+		}
+		.content5 span{
+			display: block;
+			width: 30%;
+		}
+		.content5one span:nth-of-type(1){
+			position: absolute;
+			left: 50%;
+			top:10%;
+		}
+		.content5one span:nth-of-type(2){
+			position: absolute;
+			left: 50%;
+			top:35%;
+			color: #777;
+			font-size: 0.8em;
+		}
+		.content5one img{
+			left: 10%;
+		}
+		.content5two span:nth-of-type(1){
+			position: absolute;
+			left: 10%;
+			top:10%;
+		}
+		.content5two span:nth-of-type(2){
+			position: absolute;
+			left: 10%;
+			top:35%;
+			color: #777;
+			font-size: 0.8em;
+		}
+		.content5two img{
+			left: 50%;
+		}
+		/*content6*/
+		.content6{
+			margin-top: 150px;
+			border-top: 1px solid #aaa;
+			width: 100%;
+			padding-bottom: 10%;
+		}
+		.content6div1{
+			font-size: 1.5em;
+			width: 40%;
+			margin: 0 auto;
+			padding:20px;
+			text-align: center;
+		}
+		.content6div2{
+			font-size: 0.8em;
+			width: 60%;
+			text-align: center;
+			margin: 0 auto;
+			color: #777;
+		}
+		.content6div3{
+			/*border: 1px solid red;
+*/			width: 100%;
+			margin: 50px auto;
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		/*解决子元素使用float后脱离文档流*/
+		/*.content6div3:after{
+			content:'';
+			display: table;
+			clear: both;
+		}*/
+		.content6div3 div{
+			flex: none;
+			margin: 20px;
+			width: 35%;
+			padding-bottom: 25%;
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+		}
+		.content6div3 div:nth-of-type(1){
+			background-image: url(images/images/前端学院设计图_1.png);
+		}
+		.content6div3 div:nth-of-type(2){
+			background-image: url(images/images/前端学院设计图_3.png);
+		}
+		.content6div3 div:nth-of-type(3){
+			background-image: url(images/images/前端学院设计图_5.png);
+		}
+		.content6div3 div:nth-of-type(4){
+			background-image: url(images/images/前端学院设计图_7.png);
+		}
+		/*content7*/
+		.content7{
+			width: 100%;
+			border-top: 1px solid #777;
+			padding-top:5%;
+			position: relative;
+			height: 600px;
+		}
+		.content7left{
+			border:1px solid #ccc;
+			width: 30%;
+			text-align: center;
+			padding-top: 5%;
+			padding-bottom: 5%;
+			border-radius: 10px;
+			position: absolute;
+			left: 10%;
+			top:10%;
+		}
+		.content7left input{
+			margin-top: 30px;
+		}
+		.content7left input[type=text]{
+			width: 80%;
+			padding: 10px;
+		}
+		.content7left textarea{
+			width: 83%;
+			margin-top: 30px;
+			padding-top: 10px;
+			padding-left: 10px;
+			height: 100px;
+		}
+		.content7left input[type=button]{
+			width: 88%;
+			text-align: center;
+			background-color: #000;
+			color: #fff;
+			padding-top:10px;
+			padding-bottom:10px;
+		}
+		.content7right{
+			width: 30%;
+			padding-top: 5%;
+			padding-bottom: 5%;
+			position: absolute;
+			left: 50%;
+			top:10%;
+		}
+		.content7right div{
+			width: 70%;
+			margin-top:20px;
+			position: relative;
+			left: 20%;
+			display: flex;
+		}
+		.content7right div:nth-of-type(1){
+			font-size: 1.5em;
+		}
+		.content7right div:nth-of-type(2){
+			font-size: 0.8em;
+			color: #777;
+			margin-bottom: 50px;
+		}
+		.content7right img{
+			flex: none;
+			width: 15%;
+			height: 100%;
+		}
+		/*footer*/
+		.footer{
+			width: 100%;
+			height: 300px;
+			background-color: #141414;
+			color: #fff;
+		}
+		.footerCon{
+			margin: auto;
+			width: 80%;
+			height: 300px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.footerdiv1,.footerdiv2,.footerdiv3{
+			height: 60%;
+			width: 20%;
+			flex:none;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.footerdiv4{
+			height: 60%;
+			width: 30%;
+			flex:none;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.footerdiv4 div{
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+		}
+		.footerdiv4 img{
+			flex:1;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="content1">
+	<div class="opacityDiv">
+		<br>
+		<p class="hello">Hello World</p><br>
+		<span class="sentence">Hello WorldHello WorldHello WorldHello WorldHello WorldHello WorldHello World World<br>Hello WorldHello WorldHello WorldHello WorldHello WorldHello WorldHello WorldHello <br>WorldHello WorldHello World</span><br><br><br>
+		<div class="sign">
+			<span class="sen1">CREATE YOUR ACCOUNT</span><br>
+			<span class="sen2">IT IS ABSOLUTELU FREE</span><br><br>
+			<input type="text" placeholder="abcd@baiduwork.com">&nbsp;&nbsp;
+			<input type="password" placeholder="Create your password">&nbsp;&nbsp;
+			<input type="button" value="SIGN UP" class="signupBut">
+		</div>
+	</div>
+	</div>
+	<div class="content2">
+		<br><br>
+		<div style="text-align: center;">
+		<span style="font-size: 0.8em;">BOATLOADS OF AWESOME</span><br><br>
+		<span style="font-size: 2em;">Ready-made,customizable,HTML<br> landing page sections</span><br><br>
+		</div>
+		<div class="divContainer">
+			<div class="div1"><img src="images/前端学院设计图_04.gif"><span class="title1">Mobile First</span><br><span class="title2">All modulz are built mobile-first maximun device compatibily</span></div>
+			<div class="div2"><img src="images/前端学院设计图_06.gif"><span class="title1">Mobile First</span><br><span class="title2">All modulz are built mobile-first maximun device compatibily</span></div>
+			<div class="div3"><img src="images/前端学院设计图_11.gif"><span class="title1">Mobile First</span><br><span class="title2">All modulz are built mobile-first maximun device compatibily mobile-first maximu</span></div>
+			<div class="div4"><img src="images/前端学院设计图_13.gif"><span class="title1">Mobile First</span><br><span class="title2">All modulz are built mobile-first maximun device compatibily mobile-first maximu</span></div>
+		</div>
+	</div>
+	<div class="content3">
+		<div class="content3left">
+			<span>Supportive polices for China's smart car</span><br>
+			<span>Supportive polices for China's smart carSupportive polices for China's smart carSupportive polices for China's smart carSupportive polices for China's smart car
+			</span>
+			<input type="button" value="CHECK OUT FEATURES">
+			<input type="button" value="TRY PRODUCT FOR FREE">
+		</div>
+	</div>
+	<div class="content4"> 
+		<div class="title">Try Our Awesome Products</div>
+		<div class="column">
+			<div class="content4div1">
+				<img src="images/前端学院设计图_27.gif"><br>
+				<span>Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?</span>
+			</div>
+			<div class="content4div2">
+				<img src="images/前端学院设计图_29.gif"><br>
+				<span>Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?</span>
+			</div>
+			<div class="content4div3">
+				<img src="images/前端学院设计图_32.gif"><br>
+				<span>Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?</span>
+			</div>
+		</div>
+	</div>
+	<div class="content5">
+		<div class="content5one">
+			<img src="images/images/前端学院设计图_06.png"><span>Can you say apple?Can you say banana?</span><span>Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?</span>
+		</div>
+		<div class="content5two">
+			<img src="images/images/前端学院设计图_10.png"><span>Can you say apple?Can you say banana?</span><span>Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?Can you say apple?Can you say banana?</span>
+		</div>
+	</div>
+	<div class="content6">
+		<div class="content6div1">Our Awesome Crew</div>
+		<div class="content6div2">Our Awesome CrewOur Awesome CrewOur Awesome CrewOur Awesome CrewOur Awesome CrewOur Awesome CrewOur Awesome CrewOur Awesome CrewOur Awesome CrewOur Awesome </div>
+		<div class="content6div3" id="content6div3">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="content7">
+		<div class="content7left">
+			<span>FELL FREE TO WRITE US</span><br>
+			<input type="text" placeholder="E-mail"><br>
+			<input type="text" placeholder="Subject"><br>
+			<textarea placeholder="Message"></textarea><br>
+			<input type="button" value="SEND">
+		</div>
+		<div class="content7right">
+			<div>Contacts</div>
+			<div>Make any design your own using Style EditorMake any design your own using Style EditorMake any design your own using Style EditorMake any design your own usi</div>
+			<div><img src="images/前端学院设计图_38.gif"><span>360 King Street Feastvale Trevose PA 124332</span></div>
+			<div><img src="images/前端学院设计图_41.gif"><span>(234)435-454-22233</span></div>
+			<div><img src="images/前端学院设计图_43.gif"><span>yourname@mail.com</span></div>
+		</div>
+	</div>
+	<div class="footer">
+	<div class="footerCon">
+		<div class="footerdiv1">
+			<span class="footertitle">LEARN MORE</span>
+			<span>How it works</span>
+			<span>Support</span>
+			<span>About us</span>
+			<span>Learn more</span>
+		</div>
+		<div class="footerdiv2">
+			<span class="footertitle">ABOUT US</span>
+			<span>How it works</span>
+			<span>Support</span>
+			<span>About us</span>
+			<span>Learn more</span>
+		</div>
+		<div class="footerdiv3">
+			<span class="footertitle">SUPPORT</span>
+			<span>How it works</span>
+			<span>Support</span>
+			<span>About us</span>
+			<span>Learn more</span>
+		</div>
+		<div class="footerdiv4">
+			<span class="footertitle">ENJOY YOUR LIFE</span>
+			<span>Create web UI kit for designers free oor business</span>
+			<div>
+				<img src="images/前端学院设计图_46.gif">
+				<img src="images/前端学院设计图_47.gif">
+				<img src="images/前端学院设计图_48.gif">
+				<img src="images/前端学院设计图_49.gif">
+				<img src="images/前端学院设计图_50.gif">
+				<img src="images/前端学院设计图_51.gif">
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+<script src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$('#content6div3 div').each(function(i){
+			$(this).mouseover(function(){
+				var url = "url(images/images/前端学院设计图_" + (i+1)*2 + ".png)";
+				$(this).css({
+					"background-image":url,
+					"cursor":"pointer"
+				});
+			});
+			$(this).mouseout(function(){
+			var url = "url(images/images/前端学院设计图_" + (i*2+1) + ".png)";
+				$(this).css("background-image",url);
+			});
+	});
+	$(".footer span").each(function(){
+			if($(this).attr('class') !== "footertitle"){
+				$(this).css("color","#999");
+			}
+	});
+</script>
+</body>
+</html>

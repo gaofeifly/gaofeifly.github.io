@@ -43,19 +43,19 @@
         var secondNum = document.getElementById("second-number");
         var result1 = document.getElementById("result1");
         document.getElementById("add-btn").onclick = function(){
-            result.textContent = Number(firstNum.value) + Number(secondNum.value);
+            result1.textContent = Number(firstNum.value) + Number(secondNum.value);
         };
         document.getElementById("minus-btn").onclick = function(){
-            result.textContent = Number(firstNum.value) - Number(secondNum.value);
+            result1.textContent = Number(firstNum.value) - Number(secondNum.value);
         };
         document.getElementById("times-btn").onclick = function(){
-            result.textContent = Number(firstNum.value) * Number(secondNum.value);
+            result1.textContent = Number(firstNum.value) * Number(secondNum.value);
         };
         document.getElementById("divide-btn").onclick = function(){
             if(Number(secondNum.value) === 0)
                 console.log("除数为0!");
             else
-                result.textContent = Number(firstNum.value) / Number(secondNum.value);
+                result1.textContent = Number(firstNum.value) / Number(secondNum.value);
         };
         // part2   无符号二进制
         var decNum = document.getElementById("dec-number");
@@ -79,8 +79,8 @@
                     // 生成的二进制数的位数比输入的限制位数大
                     console.log("你输入的二进制位数不够");
                 }else{
-                    for(var i=0;i<t.length;i++){
-                        t1 = 0 + t;
+                    for(var i=0;i<bin-t.length;i++){
+                        t1 = '0' + t1;
                     }
                 } 
                 result2.textContent = t1;

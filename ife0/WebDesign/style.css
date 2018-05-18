@@ -1,0 +1,435 @@
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.container {
+  width: 100%;
+  display: flex;
+}
+/*
+  left1
+  */
+.left1 {
+  position: relative;
+  flex:none;
+  width: 5%;
+  background-color: #1d262f;
+  overflow: hidden;
+}
+.left1 > div:nth-of-type(1) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.left1 > div:nth-of-type(1) > img {
+  flex: none;
+  width: 80%;
+  margin-top: 20%;
+}
+.left1 > div:nth-of-type(2) {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.left1 > div:nth-of-type(2) > img {
+  width: 30%;
+  flex: none;
+}
+/*
+  left2
+ */
+.left2 {
+  position: relative;
+  flex: none;
+  width: 250px;
+  background-color: #232c3d;
+  line-height: 140%;
+}
+.left2content {
+  position: relative;
+  padding-top: 5%;
+  color: #ddd;
+}
+.left2top,
+.left2bottom {
+  height: 23%;
+}
+.left2middle {
+  height: 20%;
+}
+.left2content > img {
+  position: absolute;
+  right: 10%;
+}
+.left2content > span {
+  position: absolute;
+  left: 10%;
+  font-size: 0.6em;
+}
+.left2title { color: #777; }
+.left2top,
+.left2middle {
+  border-bottom: 1px solid #333;
+}
+.choosed {
+  color: #fff;
+}
+.monthly {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  font-size: 0.8em;
+  width: 100%;
+  left: 10%;
+}
+/*
+righttop
+ */
+.right {
+  /*border: 1px solid red;*/
+  flex: 1;
+}
+.righttop {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 0.5px solid #ddd;
+}
+.righttop > div:nth-of-type(1) {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.righttop > span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+}
+.personInfo {
+  position: relative;
+  width: 200px;
+  height: 50px;
+}
+.personInfo > span:nth-of-type(1) {
+  position: absolute;
+  left: 70px;
+  top: 5px;
+  font-size: 0.7em;
+  color: #25c6fc;
+  font-weight: bold;
+}
+.personInfo > span:nth-of-type(2) {
+  position: absolute;
+  left: 70px;
+  top: 25px;
+  font-size: 0.7em;
+  color: #ccc;
+}
+.personInfo > img:nth-of-type(1) {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+}
+.personInfo > img:nth-of-type(2) {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+/*
+rightcontent
+ */
+.rightcontent {
+  display: flex;/*
+  border: 1px solid black;*/
+  width: 100%;
+}
+.rightcontent1 {
+  flex: none;
+  width: 250px;
+}
+.searchDiv {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-right: 0.5px solid #ddd;
+}
+.searchDiv input {
+  position: absolute;
+  left: 25px;
+  top: 15px;
+  width: 200px;
+  height: 20px;
+  border: 0.5px solid #ddd;
+}
+.searchDiv img {
+  position: absolute;
+  right: 30px;
+  top: 17px;
+  height: 20px;
+  width: 20px;
+}
+.scrollNoSee {
+  width: 100%;
+  overflow: hidden;
+  height: 500px;
+  border-right: 0.5px solid #ddd;
+}
+.messagesCon {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 270px;
+  height: 100%;
+}
+.messagesCon > div {
+  border-top: 0.5px solid #ddd;
+  position: relative;
+  width: 100%;
+  height: 80px;
+}
+.messagesCon span,
+.messagesCon img {
+  position: absolute;
+}
+.mesWatching {
+  border-left: 2px solid #25c6fc;
+}
+.logo {
+  left: 10px;
+  top: 10px;
+}
+.userUnchoosed {
+  left: 60px;
+  top: 15px;
+  font-size: 0.8em;
+}
+.userChoosed {
+  color: #25c6fc;
+  left: 80px;
+  top: 15px;
+  font-size: 0.8em;
+}
+.source {
+  color: #ddd;
+  left: 65px;
+  top: 35px;
+  font-size: 0.6em;
+}
+.mesContent {
+  color: #aaa;
+  font-size: 0.6em;
+  left: 10px;
+  bottom: 10px;
+}
+.mesNum {
+  right: 10px;
+  top: 40px;
+}
+.time {
+  color: #aaa;
+  top: 10px;
+  right: 10px;
+  font-size: 0.6em;
+}
+.bluepoint {
+  position: absolute;
+  left: 65px;
+  top: 20px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #25c6fc;
+}
+/*
+rightcontent2
+ */
+.rightcontent2 {
+  flex: 1;
+  height: 500px;
+}
+.rightcontent2Top {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 0.5px solid #ddd;
+}
+.rightcontent2Top > span,
+.rightcontent2Top > div {
+  position: absolute;
+}
+.rightcontent2Top button {
+  flex: 1;
+  height: 100%;
+  background-color: #fcfcfc;
+  border: 0.5px solid #ddd;
+}
+.sender {
+  left: 2%;
+  top: 15px;
+}
+.greenpoint {
+  left: 17%;
+  top: 23px;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  background-color: green;
+}
+.addContacts {
+  border-bottom: 0.5px solid #ddd;
+  text-align: center;
+}
+.share {
+  border-bottom: 0.5px solid #ddd;
+  text-align: center;
+}
+.delete {
+  border-bottom: 0.5px solid #ddd;
+  text-align: center;
+}
+.ratio {
+  left: 77%;
+  top: 15px;
+}
+.previous {
+  border-bottom: 0.5px solid #ddd;
+  text-align: center;
+}
+.next {
+  border-bottom: 0.5px solid #ddd;
+  text-align: center;
+}
+.but3 {
+  display: flex;
+  width: 15%;
+  height: 30px;
+  left: 55%;
+  top: 10px;
+}
+.but2 {
+  display: flex;
+  width: 10%;
+  height: 30px;
+  left: 85%;
+  top: 10px;
+}
+.communication {
+  width: 100%;
+  height: 100%;
+}
+.communication > div:nth-of-type(1) {
+  height: 180px;
+}
+.communication > div:nth-of-type(2) {
+  height: 270px;
+}
+.commuSection{
+  width: 100%;
+  position: relative;
+  border-bottom : 0.5px solid #ddd;
+}
+.communication img,
+.communication span {
+  position: absolute;
+}
+.commuPhoto1 {
+  left: 2%;
+  top: 20px;
+}
+.commuName1 {
+  left: 10%;
+  top: 20px;
+  font-size: 0.8em;
+}
+.commuCon1 {
+  font-size: 0.6em;
+  color: #777;
+  left: 10%;
+  top: 40px;
+}
+.commuTime1 {
+  font-size: 0.7em;
+  color: #999;
+  left: 22%;
+  top: 20px;
+}
+.commuPhoto2 {
+  left: 2%;
+  top: 80px;
+}
+.commuName2 {
+  left: 10%;
+  top: 80px;
+  font-size: 0.8em;
+}
+.commuCon2 {
+  font-size: 0.6em;
+  color: #777;
+  left: 10%;
+  top: 105px;
+}
+.commuTime2 {
+  font-size: 0.7em;
+  color: #999;
+  left: 22%;
+  top: 80px;
+}
+.commuPic1 {
+  left: 10%;
+  top: 160px;
+}
+.commuPic2 {
+  left: 35%;
+  top: 160px;
+}
+.bottomTag1 {
+  position: absolute;
+  bottom: -7px;
+  left: 45%;
+  width: 15%;
+  text-align: center;
+  color: #bbb;
+  font-size: 0.8em;
+  background-color: #fff;
+}
+.bottomTag2 {
+  position: absolute;
+  bottom: -7px;
+  left: 45%;
+  width: 15%;
+  text-align: center;
+  color: blue;
+  font-size: 0.8em;
+  background-color: #fff;
+}
+.commuAnswer {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+.commuAnswer > input[type=button] {
+  position: absolute;
+  left: 40px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  background-image: url(images/design_99.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  background-color: #f3f4f5;
+  border: 0.5px solid #ddd;
+}
+.commuAnswer > input[type=text] {
+  position: absolute;
+  left: 60px;
+  top: 8px;
+  width: 400px;
+  height: 17px;
+  border: 0.5px solid #ddd;

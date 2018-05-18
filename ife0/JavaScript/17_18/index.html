@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+    <style>
+        div{
+            margin: 5px;
+        }
+        td{
+            width: 8%;
+        }
+    </style>
+</head>
+<body>    
+    <div class="part1">
+        <input id="first-number" type="number" value="0" placeholder="第一个数字">
+        <input id="second-number" type="number" value="0" placeholder="第二个数字">
+        <button id="add-btn">加</button>
+        <button id="minus-btn">减</button>
+        <button id="times-btn">乘</button>
+        <button id="divide-btn">除</button>
+        <p id="result1">运算结果</p>
+    </div>    
+    <div class="part2">
+        <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+        <button id="trans-btn">转化为二进制</button>
+        <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+        <p id="result2">运算结果</p>
+    </div>    
+    <div class="part3">
+        <input id="play-three" type="button" value="戳我玩3的小游戏">
+    </div>
+    <div class="part4">
+        <input id="times-table" type="button" value="戳我玩99乘法表">
+    </div>
+    <div class="part5">
+        <input id="hello-time" type="button" value="戳我获取问候">
+    </div>
+    <script>
+        // part1
+        var firstNum = document.getElementById("first-number");
+        var secondNum = document.getElementById("second-number");
+        var result1 = document.getElementById("result1");
+        document.getElementById("add-btn").onclick = function(){
+            result.textContent = Number(firstNum.value) + Number(secondNum.value);
+        };
+        document.getElementById("minus-btn").onclick = function(){
+            result.textContent = Number(firstNum.value) - Number(secondNum.value);
+        };
+        document.getElementById("times-btn").onclick = function(){
+            result.textContent = Number(firstNum.value) * Number(secondNum.value);
+        };
+        document.getElementById("divide-btn").onclick = function(){
+            if(Number(secondNum.value) === 0)
+                console.log("除数为0!");
+            else
+                result.textContent = Number(firstNum.value) / Number(secondNum.value);
+        };
+        // part2   无符号二进制
+        var decNum = document.getElementById("dec-number");
+        var result2 = document.getElementById("result2");
+        var binBit = document.getElementById("bin-bit");
+        document.getElementById("trans-btn").onclick = function(){
+            var dec = Number(decNum.value);
+            var bin = Number(binBit.value);
+            if(dec < 0)
+                console.log("亲,我只认非负整数:)");
+            else{
+                var t = '';
+                var tlength = 0;
+                while(dec > 0){
+                    t = dec % 2 + t;
+                    dec = (dec - dec % 2) / 2;
+                    tlength++;
+                }
+                var t1 = t;
+                if(tlength > bin){
+                    // 生成的二进制数的位数比输入的限制位数大
+                    console.log("你输入的二进制位数不够");
+                }else{
+                    for(var i=0;i<t.length;i++){
+                        t1 = 0 + t;
+                    }
+                } 
+                result2.textContent = t1;
+            }
+        };
+        // part3
+        document.getElementById("play-three").onclick = function(){
+            for(var i=1;i<=100;i++){
+                if(i % 3 === 0 || ('' + i).indexOf('3') > -1)
+                    console.log("PA");
+                else
+                    console.log(i);
+            }
+        };
+        // part4
+        document.getElementById("times-table").onclick = function(){
+            //console输出
+            for(var i=1;i<=9;i++){
+                for(var j=i;j<=9;j++){
+                    console.log(i + "*" + j + "=" + i*j);
+                }
+            }
+            //html页面table输出
+            var table = document.createElement("table");
+            var s = '';
+            for(var i=1;i<=9;i++){
+                s += "<tr>";
+                for(var j=1;j<=i;j++){
+                    s += "<td>" + (j + "*" + i + "=" + i*j) + "</td>";
+                }
+                s += "</tr>";
+            }
+            table.innerHTML = s;
+            document.getElementById("times-table").parentNode.appendChild(table);
+        };
+        // part5
+        document.getElementById("hello-time").onclick = function(){
+            var helloTime = new Date().getHours();
+            //上午7点-12点  中午12点到15点  下午15点-19点  晚上19点到7点
+            if(helloTime >= 7 && helloTime < 12 ){
+                alert("上午好,宝贝!");
+            }else if(helloTime >= 12 && helloTime < 15 ){
+                alert("中午好,宝贝!");
+            }else if(helloTime >= 15 && helloTime < 19 ){
+                alert("下午好,宝贝!");
+            }else{
+                alert("晚安,宝贝:)");
+            }
+        };
+    </script>
+</body>
+</html>

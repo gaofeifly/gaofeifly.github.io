@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>基于Sprite制作的动画</title>
+  <style>
+    #con {
+      width: 500px;
+      height: 480px;
+      border: 1px solid red;
+      background-image: url(erik.jpg);
+      background-repeat: no-repeat;
+      background-position: 0px 0px;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+<body>
+<div id="con"></div>
+<script>
+  var oDiv = document.getElementById("con");
+  setInterval(changePosition,100);
+  setInterval(goback,1600);
+  var pos = 0;
+  var t = 0;
+  function changePosition(){
+    if(t === 0)
+      pos -= 480;
+    else
+      pos += 480;
+    oDiv.style.backgroundPosition = "0px " + pos + "px";
+  }
+  function goback(){
+    t === 0 ? t = 1 : t = 0;
+  }
+</script>
+</body>
+</html>

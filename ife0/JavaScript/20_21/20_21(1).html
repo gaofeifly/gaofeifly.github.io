@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>20_21</title>
+</head>
+<body>
+  <input id="name" type="text">    
+  <button id="submit-btn">Submit</button>
+<script>
+  document.getElementById("submit-btn").onclick = function(){
+    console.log(document.getElementById("name").value);
+  }
+  document.onkeydown = function(e){
+    // 回车
+    if(e && e.keyCode == 13)
+      console.log(document.getElementById("name").value);   
+    // Esc
+    if(e && e.keyCode == 27)
+      document.getElementById("name").value = "";
+  }
+</script>
+</body>
+</html>

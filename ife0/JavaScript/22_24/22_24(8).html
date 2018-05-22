@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>22_24(8)</title>
+</head>
+<body>
+<p>控制台查看结果</p>
+<script>
+var arr1 = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+// 从大到小
+console.log(arr1.sort((a,b) => b - a));
+// 从小到大
+console.log(arr1.sort((a,b) => a - b));
+
+var arr2 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+// a-z
+console.log(arr2.sort());
+// z-a
+console.log(arr2.sort(function(a,b){
+  if(a>b)
+    return -1;
+  if(a<b)
+    return 1;
+  return 0;
+}));
+// 按第二个数从大到小
+var arr3 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+console.log(arr3.sort(function(a,b){
+  return b[1] - a[1];
+}));
+// 按照value从小到大
+var arr4 = [
+    {
+        id: 1,
+        name: 'candy',
+        value: 40
+    }, {
+        id: 2,
+        name: 'Simon',
+        value: 50
+    }, {
+        id: 3,
+        name: 'Tony',
+        value: 45
+    }, {
+        id: 4,
+        name: 'Annie',
+        value: 60
+    }
+];
+console.log(arr4.sort(function(a,b){
+  return a.value - b.value;
+}));
+
+var scoreObject = {
+    "Tony": {
+        "Math": 95,
+        "English": 79,
+        "Music": 68
+    }, 
+    "Simon": {
+        "Math": 100,
+        "English": 95,
+        "Music": 98
+    }, 
+    "Annie": {
+        "Math": 54,
+        "English": 65,
+        "Music": 88
+    }
+}
+// 数组转字符串用join   字符串转数组用split
+obj2arr(scoreObject);
+function obj2arr(scoreObj){
+  var scoreArray = [];
+  for(index in scoreObj){
+    var temparr = [];
+    temparr.push(index);
+    console.log(scoreObj[index]);
+    for(key in scoreObj[index]){
+      temparr.push(scoreObj[index][key]);
+    }
+    scoreArray.push(temparr);
+  }
+  console.log(scoreArray);
+}
+
+var menuArr = [
+    [1, "Area1", -1],
+    [2, "Area2", -1],
+    [3, "Area1-1", 1],
+    [4, "Area1-2", 1],
+    [5, "Area2-1", 2],
+    [6, "Area2-2", 2],
+    [7, "Area1-2-3", 4],
+    [8, "Area2-2-1", 6],
+];
+
+arr2obj(menuArr);
+function arr2obj(arr){
+  var stopRecur = false;   //强制结束递归
+  var obj = new Object();
+  for(val of arr){
+    stopRecur = false;
+    if(val[2] == -1){
+      var o = new Object();
+      o.name = val[1];
+      obj[val[0]]= o;
+    }
+    else{
+      // console.log(val[2]);
+      recursionObj(obj);
+      function recursionObj(obj){
+        if(stopRecur)
+          return;
+        // if(obj)
+        for(key in obj){
+          if(key == val[2]){
+            console.log(val[0]);
+            var obj1 = {};
+            obj1["name"] = val[1];
+            if(obj[key]["submenu"] == undefined)
+              obj[key]["submenu"] = {};
+            obj[key]["submenu"][val[0]] = obj1;
+            stopRecur = true;
+            break;
+          }
+          recursionObj(obj[key]["submenu"]);
+        }
+      }
+    }
+
+  }
+  console.log(obj);
+}
+
+</script>
+</body>
+</html>

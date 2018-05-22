@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>22_24(7)</title>
+</head>
+<body>
+<p>栈顶对应数组中最后一个元素</p>
+<input id="stack-input" type="text">
+<p id="stack-cont">栈内容：apple-&gt;pear</p>    
+<button id="push-btn">进栈</button>
+<button id="pop-btn">退栈</button>
+<button id="font-btn">打印栈顶元素内容</button>
+<button id="empty-btn">判断栈是否为空</button>
+<br><br><br>
+<p>栈顶对应数组中第一个元素</p>
+<input id="stack-input1" type="text">
+<p id="stack-cont1">栈内容：apple-&gt;pear</p>    
+<button id="push-btn1">进栈</button>
+<button id="pop-btn1">退栈</button>
+<button id="font-btn1">打印栈顶元素内容</button>
+<button id="empty-btn1">判断栈是否为空</button>
+
+<script>
+
+var stack = ["apple", "pear"];
+// 栈顶对应数组中最后一个元素
+var input = document.getElementById("stack-input");
+var p = document.getElementById("stack-cont");
+document.getElementById("push-btn").onclick = function(){
+  stack.unshift(input.value);
+  p.textContent = "栈内容:" + stack.join("->");
+}
+document.getElementById("pop-btn").onclick = function(){
+  stack.shift(input.value);
+  p.textContent = "栈内容:" + stack.join("->");
+}
+document.getElementById("font-btn").onclick = function(){
+  console.log(stack[stack.length-1]);
+}
+document.getElementById("empty-btn").onclick = function(){
+  if(stack.length === 0)
+    console.log("栈为空");
+  else
+    console.log("栈不为空");
+}
+var stack1 = ["apple", "pear"];
+// 栈顶对应数组中第一个元素
+var input1 = document.getElementById("stack-input1");
+var p1 = document.getElementById("stack-cont1");
+document.getElementById("push-btn1").onclick = function(){
+  stack1.push(input1.value);
+  p1.textContent = "栈内容:" + stack1.join("<-");
+}
+document.getElementById("pop-btn1").onclick = function(){
+  stack1.pop(input1.value);
+  p1.textContent = "栈内容:" + stack1.join("<-");
+}
+document.getElementById("font-btn1").onclick = function(){
+  console.log(stack1[0]);
+}
+document.getElementById("empty-btn1").onclick = function(){
+  if(stack1.length === 0)
+    console.log("栈为空");
+  else
+    console.log("栈不为空");
+}
+</script>
+</body>
+</html>

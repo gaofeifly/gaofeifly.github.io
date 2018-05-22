@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>22_24(2)</title>
+  <style>
+    button{
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+<div>
+    <label>String A:
+        <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+    </label>
+    <textarea id="str-a" rows="10"></textarea>
+    <label>String B:
+        <input id="radio-b" type="radio" name="str-obj" value="b">
+    </label>
+    <textarea id="str-b"></textarea>        
+    <label>Num A：<input id="num-a" type="number" value="0"></label>
+    <label>Num B：<input id="num-b" type="number" value="1"></label>
+</div>
+<div>
+    <button>获取当前选中输入的内容长度</button>
+    <button>当前选中输入中的第3个字符</button>
+    <button>把两个输入框的文字连接在一起输出（concat）</button>
+    <button>输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+    <button>输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+    <button>使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+    <button>当前选中输入框的行数</button>
+    <button>使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+    <button>把所选输入框中的内容全部转为大写</button>
+    <button>把所选输入框中的内容全部转为小写</button>
+    <button>把所选输入框中内容的半角空格全部去除</button>
+    <button>把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+</div>
+<p id="result"></p>
+
+<script>
+    var rA = document.getElementById("radio-a");
+    var rB = document.getElementById("radio-b");
+    var textA = document.getElementById("str-a");
+    var textB = document.getElementById("str-b");
+    var numA = document.getElementById("num-a");
+    var numB = document.getElementById("num-b");
+    var str;
+    var p = document.getElementById("result");
+    function whichone(){
+      if(rA.checked)
+        str = textA;
+      else
+        str = textB;
+    }
+    var buts = document.querySelectorAll("button");
+    buts[0].onclick = function(){
+      whichone();
+      p.textContent = str.value.length;
+    }
+    buts[1].onclick = function(){
+      whichone();
+      p.textContent = str.value.charAt(2);
+    }
+    buts[2].onclick = function(){
+      p.textContent = textA.value.concat(textB.value);
+    }
+    buts[3].onclick = function(){
+      p.textContent = textA.value.indexOf(textB.value);
+    }
+    buts[4].onclick = function(){
+      p.textContent = textB.value.lastIndexOf(textA.value);
+    }
+    buts[5].onclick = function(){
+      whichone();
+      p.textContent = str.value.slice(Number(numA.value),Number(numB.value));
+    }
+    buts[6].onclick = function(){
+      whichone();
+      p.textContent = str.rows;
+    }
+    buts[7].onclick = function(){
+      whichone();
+      p.textContent = str.value.substr(Number(numA.value),Number(numB.value));
+    }
+    buts[8].onclick = function(){
+      whichone();
+      p.textContent = str.value.toUpperCase();
+    }
+    buts[9].onclick = function(){
+      whichone();
+      p.textContent = str.value.toLowerCase();
+    }
+    buts[10].onclick = function(){
+      whichone();
+      p.textContent = str.value.replace(/\s/g,"");
+    }
+    buts[11].onclick = function(){
+      whichone();
+      if(str == textA)
+        p.textContent = str.value.replace("a",textB.value);
+      else
+        p.textContent = str.value.replace("a",textA.value);
+    }
+</script>
+</body>
+</html>

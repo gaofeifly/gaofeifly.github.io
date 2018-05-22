@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>22_24(4)</title>
+</head>
+<body>
+    <p>控制台内查看结果</p>
+    <button>去除内容两侧的空格包括全角和半角</button>
+    <button>去掉字符串str中连续重复的地方</button>
+<script>
+    var buts = document.querySelectorAll("button");
+    buts[0].onclick = function(){
+      // 半角
+      console.log(diyTrim(' a f b    ')); // ->a f b
+      console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+      console.log(diyTrim(' a f b    ')); // ->a f b
+      console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+      console.log(diyTrim('1    ')); // ->1
+      // 全角
+      console.log(diyTrim('　　f')); // ->f
+      console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+      console.log(diyTrim(' ')); // ->
+      console.log(diyTrim('　')); // ->
+      console.log(diyTrim('')); // ->
+    }
+    buts[1].onclick = function(){
+      console.log(removeRepetition("aaa")); // ->a
+      console.log(removeRepetition("abbba")); // ->aba
+      console.log(removeRepetition("aabbaabb")); // ->abab
+      console.log(removeRepetition("")); // ->
+      console.log(removeRepetition("abc")); // ->abc
+    }
+
+    /*
+实现一个字符串头尾去除空格的函数
+注意需要去除的空格，包括全角、半角空格
+暂时不需要学习和使用正则表达式的方式
+*/
+function diyTrim(str) {
+    var result = "";
+    while(str.charAt(0) == " " || str.charAt(0) == "　"){
+      str = str.substr(1);
+    }
+    while(str.charAt(str.length-1) == " " || str.charAt(str.length-1) == "　"){
+      str = str.substring(0,str.length-1);
+    }
+    return str;
+}
+
+/*
+去掉字符串str中，连续重复的地方
+*/
+function removeRepetition(str) {
+    var index = 0;
+    while(index!==str.length){
+      if(str[index] === str[index+1])
+        str = str.substring(0,index+1) + str.substring(index+2);
+      else
+        index++;
+    }
+    return str;
+}
+</script>
+</body>
+</html>

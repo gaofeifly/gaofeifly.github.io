@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <style>
+    button{
+      margin: 5px;
+    }
+    img{
+      width: 50%;
+
+    }
+  </style>
+  <title>22_24(3)</title>
+</head>
+<body>
+<p>查看输出结果请移步控制台</p>
+<input id="name" type="text" placeholder="name"><br>
+<p>Simon  Carl Lee  Fate Annie Saber Tony Kai  Candy</p>
+<input id="id" type="text" placeholder="id"><br>
+<button>戳我通过name查找id</button>
+<button>戳我通过id查找name</button>
+<button>戳我前序遍历</button>
+<button>戳我中序遍历</button>
+<button>戳我后序遍历</button>
+<img src="树.jpg">
+</body>
+</html>
+
+<script>
+
+var tree = {
+    "id": 0,
+    "name": "root",
+    "left": {
+        "id": 1,
+        "name": "Simon",
+        "left": {
+            "id": 3,
+            "name": "Carl",
+            "left": {
+                "id": 7,
+                "name": "Lee",
+                "left": {
+                    "id": 11,
+                    "name": "Fate"
+                }
+            },
+            "right": {
+                "id": 8,
+                "name": "Annie",
+                "left": {
+                    "id": 12,
+                    "name": "Saber"
+                }
+            }
+        },
+        "right": {
+            "id": 4,
+            "name": "Tony",
+            "left": {
+                "id": 9,
+                "name": "Candy"
+            }
+        }
+    },
+    "right": {
+        "id": 2,
+        "name": "right",
+        "left": {
+            "id": 5,
+            "name": "Carl",
+        },
+        "right": {
+            "id": 6,
+            "name": "Carl",
+            "right": {
+                "id": 10,
+                "name": "Kai"
+            }        
+        }
+    }
+}
+
+var nameInput = document.getElementById("name");
+var idInput = document.getElementById("id");
+var buts = document.querySelectorAll("button");
+buts[0].onclick = function(){
+  console.log(findIdByName(myTrim(nameInput.value)));
+}
+buts[1].onclick = function(){
+  console.log(findNameById(myTrim(idInput.value)));
+}
+buts[2].onclick = function(){
+  getListWithDLR();
+}
+buts[3].onclick = function(){
+  getListWithLDR();
+}
+buts[4].onclick = function(){
+  getListWithLRD();
+}
+
+function myTrim(str){
+  return str.replace(/\s/g,"");
+}
+
+// 假设id和name均不会重复，根据输入name找到对应的id
+function findIdByName(name) {
+  var result;
+  loop(tree);
+  return result?result:"没找到";
+  function loop(tree){
+    for(t in tree){
+      if(t == "name" && tree[t] == name){
+        result = tree["id"];
+        return;
+      }
+      else if(t == "left" || t == "right"){
+        loop(tree[t]);
+      }
+    }
+  }
+}
+
+// 假设id和name均不会重复，根据输入id找到对应的name
+function findNameById(id) {
+  var result;
+  loop(tree);
+  return result;
+  function loop(tree){
+    for(t in tree){
+      if(t == "id" && tree[t] == id){
+        result = tree["name"];
+        return;
+      }
+      else if(t == "left" || t == "right"){
+        loop(tree[t]);
+      }
+    }
+  }
+}
+
+// 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+// 根结点-->左子树-->右子树
+function getListWithDLR() {
+  loop(tree);
+  function loop(tree){
+    console.log(tree.id);
+    if(!!tree["left"])
+      loop(tree["left"]);
+    if(!!tree["right"])
+      loop(tree["right"]);
+  }
+  // function loop(tree){
+  //   for(t in tree){
+  //     if(t == "id" || t == "name"){
+  //       console.log(tree[t]);
+  //     }
+  //     else if(t == "left" || t == "right"){
+  //       loop(tree[t]);
+  //     }
+  //   }
+  // }
+}
+
+// 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+// 左子树-->根结点-->右子树
+function getListWithLDR() {
+  loop(tree);
+  function loop(tree){
+    if(!!tree["left"])
+      loop(tree["left"]);
+    console.log(tree.id);
+    if(!!tree["right"])
+      loop(tree["right"]);
+  }
+}
+
+// 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+// 左子树-->右子树-->根结点
+function getListWithLRD() {
+  loop(tree);
+  function loop(tree){
+    if(!!tree["left"])
+      loop(tree["left"]);
+    if(!!tree["right"])
+      loop(tree["right"]);
+    console.log(tree.id);
+  }
+}
+</script>

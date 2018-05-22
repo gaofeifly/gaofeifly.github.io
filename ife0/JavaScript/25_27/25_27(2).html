@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>25_27(2)</title>
+</head>
+<body>
+<select id="year-select"></select>
+<select id="month-select"></select>
+<select id="day-select"></select>
+<select id="hour-select"></select>
+<select id="minute-select"></select>
+<select id="second-select"></select>
+<p id="result-wrapper"></p>
+
+<script>
+var year = document.getElementById("year-select");
+var month = document.getElementById("month-select");
+var day = document.getElementById("day-select");
+var hour = document.getElementById("hour-select");
+var minute = document.getElementById("minute-select");
+var second = document.getElementById("second-select");
+var result = document.getElementById("result-wrapper");
+var selects = document.querySelectorAll("select");
+
+var str = "";   //还有 or 已经过去
+var rightNow = false;   //是否为同一时刻
+var timeDifference = 0;   //相差时间(毫秒)
+var diffDay = 0;
+var diffHour = 0;
+var diffMinute = 0;
+var diffSecond = 0;
+var weekday;    //记录设置的那天为星期几
+
+Start();
+// 主函数
+function Start(){
+
+  createOptions();
+  createDayOptions();
+  for(var i=0;i<selects.length;i++){
+    if(i === 1)
+      continue;
+    selects[i].onchange = Click;
+  }
+  month.onchange = function(){
+    createDayOptions();
+    calculate();
+    printResult();
+  }
+}
+//options 被点击后计算相差时间 打印结果
+function Click(){
+  calculate();
+  printResult();
+}
+// 创建options
+function createOptions(){
+  for(var i=2002;i<2032;i++){
+    var option = document.createElement("option");
+    option.innerHTML = i+1;
+    option.value = i+1;
+    year.appendChild(option);
+  }
+  for(var i=0;i<12;i++){
+    var option = document.createElement("option");
+    option.innerHTML = i+1;
+    option.value = i+1;
+    month.appendChild(option);
+  }
+  for(var i=0;i<24;i++){
+    var option = document.createElement("option");
+    option.innerHTML = one2two(i);
+    option.value = one2two(i);
+    hour.appendChild(option);
+  }
+  for(var i=0;i<60;i++){
+    var option = document.createElement("option");
+    option.innerHTML = one2two(i);
+    option.value = one2two(i);
+    minute.appendChild(option);
+  }
+  for(var i=0;i<60;i++){
+    var option = document.createElement("option");
+    option.innerHTML = one2two(i);
+    option.value = one2two(i);
+    second.appendChild(option);
+  }
+}
+// 根据月份改变日期天数
+function createDayOptions(){
+  day.innerHTML = "";
+  for(var i=0;i<getDaysOfMonth();i++){
+    var option = document.createElement("option");
+    option.innerHTML = i+1;
+    option.value = i+1;
+    day.appendChild(option);
+  }
+}
+// 判断星期几
+function getWeekDay(date){
+  var weekArr = ["日","一","二","三","四","五","六"];
+  return weekArr[date.getDay()];
+}
+// 个位数转两位数
+function one2two(num){
+  if(num<10)
+    return "0" + num;
+  return num;
+}
+// 判断是否为闰年   不能被100整除但能被4整除
+function isRunYear(){
+  if(Number(year.value) % 4 === 0 && Number(year.value) % 100 !== 0){
+    return true;
+  }
+  return false;
+}
+// 根据月份来确定day的天数
+function getDaysOfMonth(){
+  var daysArr = [31,isRunYear()?29:28,31,30,31,30,31,31,30,31,30,31];
+  return daysArr[Number(month.value)-1];
+}
+// 判断日期前后   将来为true  过去为false  正好 设置rightNow 为 true
+function beforeOrAfter(date){
+  var year1 = Number(year.value);
+  var month1 = Number(month.value);
+  var day1 = Number(day.value);
+  var hour1 = Number(hour.value);
+  var minute1 = Number(minute.value);
+  var second1 = Number(second.value);
+  if(year1>date.getFullYear())
+    return true;
+  else if(year1<date.getFullYear())
+    return false;
+  if(month1>date.getMonth()+1)
+    return true;
+  else if(month1<date.getMonth()+1)
+    return false;
+  if(day1>date.getDate())
+    return true;
+  else if(day1<date.getDate())
+    return false;
+  if(hour1>date.getHours())
+    return true;
+  else if(hour1<date.getHours())
+    return false;
+  if(minute1>date.getMinutes())
+    return true;
+  else if(minute1<date.getMinutes())
+    return false;
+  if(second1>date.getSeconds())
+    return true;
+  else if(second1<date.getSeconds())
+    return false;
+  else
+    rightNow = true;
+  return false;
+}
+
+// 每次更改选项就重新计算
+function calculate(){
+  var date = new Date();
+  var dateSet = new Date();
+  dateSet.setFullYear(Number(year.value));
+  dateSet.setMonth(Number(month.value)-1);
+  dateSet.setDate(Number(day.value));
+  dateSet.setHours(Number(hour.value));
+  dateSet.setMinutes(Number(minute.value));
+  dateSet.setSeconds(Number(second.value));
+  console.log(dateSet);
+  if(beforeOrAfter(date)){
+    str = "还有";
+    timeDifference = Date.parse(dateSet) - Date.parse(date);
+  }
+  else{
+    str = "已经过去";
+    timeDifference = Date.parse(date) - Date.parse(dateSet);
+  }
+  timeDifference = parseInt(timeDifference/1000);
+  diffDay = parseInt(timeDifference / (24*60*60));  
+  timeDifference -= diffDay*24*60*60;
+  diffHour = parseInt(timeDifference / (60*60));
+  timeDifference -= diffHour*60*60;
+  diffMinute = parseInt(timeDifference / 60);
+  timeDifference -= diffMinute*60;
+  diffSecond = timeDifference;
+  weekday = getWeekDay(dateSet);
+
+}
+// 输出结果
+function printResult(){
+  if(rightNow)
+    result.textContent = "见证奇迹的时刻！！！同年同月同日同时同分同秒！";
+  else
+    result.textContent = "现在距离" + year.value + "年" + month.value + "月" + day.value + "日星期" + weekday + " " + hour.value + ":" + minute.value + ":" + second.value + str + diffDay + "天" + diffHour + "小时" + diffMinute + "分" + diffSecond + "秒";
+}
+</script>
+</body>
+</html>

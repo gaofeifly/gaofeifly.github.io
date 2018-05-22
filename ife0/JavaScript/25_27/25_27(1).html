@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>25_27(1)</title>
+</head>
+<body>
+<p id="datetime1"></p>
+<p id="datetime2"></p>
+<script>
+var date = new Date();
+printDate1(date);
+printDate2(date);
+// 根据日期获取星期几
+function getWeekdayByDate1(date){
+  var weekdays = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+  return weekdays[date.getDay()];
+}
+function getWeekdayByDate2(date){
+  var weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  return weekdays[date.getDay()];
+}
+// 将个位数变成两位数
+function get2bitsDate(date){
+  if((""+date).length === 1)
+    return "0" + date;
+  return date;
+}
+function get12Hours(date){
+  if((""+date).length === 1)
+    return "0" + date;
+  if(date > 12)
+    return get2bitsDate(date - 12);
+  return date;
+}
+// 判断上午还是下午
+function getAMorPM(date){
+  if(date.getHours()>12)
+    return "PM";
+  return "AM";
+}
+// 打印特定格式的日期
+function printDate1(date){
+  var result = date.getFullYear() + "年"  + get2bitsDate(date.getMonth()+1) + "月" + get2bitsDate(date.getDate()) + "日"+ getWeekdayByDate1(date) + " " + get2bitsDate(date.getHours()) + ":" + get2bitsDate(date.getMinutes()) + ":" + get2bitsDate(date.getSeconds());
+  document.getElementById("datetime1").textContent = result;
+}
+function printDate2(date){
+  var result = date.getFullYear() + "-"  + get2bitsDate(date.getMonth()+1) + "-" + get2bitsDate(date.getDate()) + " "+ getWeekdayByDate2(date) + " " + get12Hours(date.getHours()) + ":" + get2bitsDate(date.getMinutes()) + ":" + get2bitsDate(date.getSeconds()) + " " + getAMorPM(date);
+  document.getElementById("datetime2").textContent = result;
+}
+</script>
+</body>
+</html>

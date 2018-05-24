@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>28_30(1)</title>
+  <style>
+    .email-sug {
+      position: relative;
+      left: -30px;
+      display: none;
+    }
+    .email-sug li {
+      list-style: none;
+    }
+    /*.email-sug li:hover {
+      background-color: #ccc;
+    }*/
+    /*.email-sug li:nth-of-type(1) {
+      background-color: pink;
+    }*/
+  </style>
+</head>
+<body>
+<div class="wrapper">
+    <input id="email-input" type="text" autofocus="true">
+    <ul id="email-sug-wrapper" class="email-sug"></ul>
+</div>
+
+<script>
+var emailInput = document.getElementById("email-input");
+var emailUl = document.getElementById("email-sug-wrapper");
+var postfixList = ['@163.com', '@gmail.com', '@126.com', '@qq.com', '@263.net'];
+// getElementsByTagName 可以包含动态加入的li   querySelectorAll 不行
+var lis = document.getElementsByTagName("li");
+var index = 0;    //当前选中项
+
+// emailInput.onkeyup = function(){
+// 均有反应
+// }
+// emailInput.onkeypress = function(){
+// 上下左右 Esc无反应
+// }
+emailInput.oninput = function(){
+  // 上下左右 Esc 回车无反应
+  var value = myTrim(emailInput.value);
+  promptContent(value);
+  promptDisplay(value);
+}
+emailInput.onkeydown = function(event){
+// 均有反应
+  if((event.keyCode === 38 || event.keyCode === 40 || event.keyCode === 13) && emailUl.style.display !== "none"){
+    // changeBackground(event.keyCode);  //基于dom
+    changeBackground2(event.keyCode);   //基于数据
+  }
+  if(event.keyCode === 27)    //Esc
+    emailInput.select();
+}
+//基于dom时使用
+// emailUl.onmouseover = function(event){
+//   var event = event || window.event;
+//   if(event.target.nodeName.toLowerCase() == "li"){
+//     if(lis[0] == event.target)
+//       return;
+//     event.target.style.backgroundColor = "#cccccc";
+//     for(var i=1;i<lis.length;i++){
+//       if(lis[i] !== event.target)
+//         lis[i].style.backgroundColor = "#ffffff";
+//     }
+//   }
+// }
+//基于数据时使用
+emailUl.onmouseover = function(event){
+  var event = event || window.event;
+  if(event.target.nodeName.toLowerCase() == "li"){
+    for(var i=1;i<lis.length;i++){
+      if(lis[i] == event.target){
+        index = i;
+        lis[i].style.backgroundColor = "#cccccc";
+      }
+      else
+        lis[i].style.backgroundColor = "#ffffff";
+    }
+  }
+}
+// 生成提示框的内容
+function promptContent(value){
+  emailUl.innerHTML = "";
+  var valueSuffix = ""; //后缀
+  if(value !== ""){
+    if(value.indexOf("@") > -1){
+      valueSuffix = value.substring(value.indexOf("@"));  //@后的内容
+      value = value.slice(0,value.indexOf("@")); // @前的内容
+    }
+    for(var i=0;i<postfixList.length;i++){
+        if(postfixList[i].indexOf(valueSuffix) === -1)   //不能匹配@后的内容则跳过
+          continue;
+        var li = document.createElement("li");
+        li.textContent = value + postfixList[i];
+        li.style.backgroundColor = "#ffffff";
+        emailUl.appendChild(li);
+      }
+    if(lis.length > 0)
+      lis[0].style.backgroundColor = "pink";
+  }
+}
+// 控制提示框是否显示
+function promptDisplay(value){
+  if(value !== "")
+    emailUl.style.display = "block";
+  else
+    emailUl.style.display = "none";
+}
+// 去除左右空格
+function myTrim(str){
+  return str.replace(/(^\s*)|(\s*$)/g,'');
+}
+// 提示内容点击事件代理
+emailUl.onclick = function(e){
+  var e = e || window.event;
+  if(e.target.nodeName.toLowerCase() == "li"){
+    // emailInput.value = e.target.innerHTML;
+    emailInput.value = htmlDecode(e.target.innerHTML);
+    emailUl.style.display = "none";
+    emailInput.focus();
+  }
+}
+// 转码与解码
+function htmlEncode(html){
+  var temp = document.createElement("div");
+  temp.textContent = html;
+  var output = temp.innerHTML;
+  temp = null;
+  return output;
+}
+function htmlDecode(html){
+  var temp = document.createElement("div");
+  temp.innerHTML = html;
+  var output = temp.textContent;
+  temp = null;
+  return output;
+}
+//找到当前所处于的那个li    基于dom
+function findChoosedLi(){    
+  if(emailUl.style.display == "none")
+    return;
+  for(var i=0;i<lis.length;i++){
+    if(colorRGB2Hex(lis[i].style.backgroundColor) == "#cccccc")
+      return i;
+  }
+  return 0;
+}
+//上下键控制选择内容   基于数据   
+function changeBackground2(keycode){
+  if(keycode === 38){
+    if(index !== 0)
+      lis[index].style.backgroundColor = "#ffffff";
+    // 上
+    if(index === 0)
+      index = lis.length - 1;
+    else
+      index -= 1;
+    if(index !== 0)
+      lis[index].style.backgroundColor = "#cccccc";
+  }else if(keycode === 40){
+    if(index !== 0)
+      lis[index].style.backgroundColor = "#ffffff";
+    // 下
+    if(index === lis.length - 1)
+      index = 0;
+    else
+      index += 1;
+    if(index !== 0)
+      lis[index].style.backgroundColor = "#cccccc";
+  }else if(keycode == 13){
+    // 回车
+    emailInput.value = htmlDecode(lis[index].innerHTML);
+    emailUl.style.display = "none";
+  }
+}
+// 上下键控制选择内容  基于dom时使用
+function changeBackground(keycode){
+  if(keycode === 38){
+    // 上
+    index = findChoosedLi();
+    if(index === 0){
+      index = lis.length-1;
+      lis[index].style.backgroundColor = "#cccccc";
+    }
+    else if(index > 1){
+      lis[index].style.backgroundColor = "#ffffff";
+      index -= 1;
+      lis[index].style.backgroundColor = "#cccccc";
+    }
+    else if(index === 1){
+      // 认为第一条的背景颜色一直保留
+      lis[index].style.backgroundColor = "#ffffff";
+      index -= 1;
+    }
+  }else if(keycode === 40){
+    // 下
+    index = findChoosedLi();
+    if(index === lis.length-1){
+      index = 0;
+      lis[lis.length-1].style.backgroundColor = "#ffffff";
+    }
+    else if(index > 0 && index < lis.length-1){
+      lis[index].style.backgroundColor = "#ffffff";
+      index += 1;
+      lis[index].style.backgroundColor = "#cccccc";
+    }
+    else if(index === 0){
+      // 认为第一条的背景颜色一直保留
+      index += 1;
+      lis[index].style.backgroundColor = "#cccccc";
+    }
+  }else if(keycode == 13){
+    // 回车
+    emailInput.value = htmlDecode(lis[index].innerHTML);
+    emailUl.style.display = "none";
+  }
+}
+// rgb转16进制
+function colorRGB2Hex(color) {
+  if(color.indexOf("rgb") === -1)
+    return;
+  // console.log(color);
+  var rgb = color.split(",");
+  var r = parseInt(rgb[0].split('(')[1]);
+  var g = parseInt(rgb[1]);
+  var b = parseInt(rgb[2].split(')')[0]);
+
+  var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  return hex;
+}
+</script>
+</body>
+</html>

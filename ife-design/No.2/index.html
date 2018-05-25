@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>No.2</title>
+  <style>
+    #container {
+      display: flex;
+
+    }
+    #container > div {
+      text-align: center;
+      width: 100px;
+      height: 100px;
+      background-color: #eee;
+      line-height: 100px;
+      flex: none;
+      margin: 50px;
+    }
+    #container > div:nth-of-type(2) {
+      transform: skew(30deg);
+    }
+    #container > div:nth-of-type(3) {
+      transform: scaleX(0.5);
+    }
+    #container > div:nth-of-type(4) {
+      transform: rotate(45deg);
+    }
+    #container > div:nth-of-type(5) {
+      transform: translate(10px,20px);
+    }
+    #container > div:nth-of-type(6) {
+      transform: translate(10px,20px)
+                 skew(30deg)
+                 scaleX(0.5)
+                 rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+<div id="container"> 
+<div>box1</div>
+<div>box2</div>
+<div>box3</div>
+<div>box4</div>
+<div>box5</div>
+<div>box6</div>
+</div>
+
+</body>
+</html>

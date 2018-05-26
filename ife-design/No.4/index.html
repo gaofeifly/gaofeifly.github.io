@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>No.4</title>
+  <style>
+    .container {
+      position: relative;
+      width: 250px;
+      margin: 0 auto;
+      height: 300px;
+      -webkit-perspective: 500; 
+              perspective: 500;
+      transform-style: preserve-3d;
+      -webkit-transition: transform 1s ease-in-out;
+         -moz-transition: transform 1s ease-in-out;
+           -o-transition: transform 1s ease-in-out;
+              transition: transform 1s ease-in-out;
+    }
+    .container:hover {
+       -webkit-transform: rotateY(-180deg);
+          -moz-transform: rotateY(-180deg);
+           -ms-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+               transform: rotateY(-180deg);
+    }
+
+    .img1 {
+      position: absolute;
+      z-index: 2;
+      backface-visibility: hidden;
+    } 
+    .img2 {
+      position: absolute;
+      z-index: 1;
+      backface-visibility: visible;
+       -webkit-transform: rotateY(-180deg);
+          -moz-transform: rotateY(-180deg);
+           -ms-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+               transform: rotateY(-180deg);
+    } 
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="img1">
+    <img src="正面.jpg">
+  </div>
+  <div class="img2">
+    <img src="反面.jpg">
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+body {
+  background-color: #102131;
+  overflow-x: hidden;
+}
+.backWave {
+  width: 45%;
+  height: 70vh;
+  background-color: #1f2b44;
+  border-radius: 20%;
+  box-shadow: 3px 3px 5px 2px #18283f;
+  -webkit-animation: wave 5s infinite linear;
+     -moz-animation: wave 5s infinite linear;
+       -o-animation: wave 5s infinite linear;
+          animation: wave 5s infinite linear;
+}
+.backWave:nth-of-type(1){
+  z-index: 2;
+  position: absolute;
+  top: -30%;
+  left: -8%;
+}
+.backWave:nth-of-type(2){
+  position: absolute;
+  top: -34%;
+  left: 8%;
+}
+#man {
+  position: absolute;
+  right: -10%;
+  top: 10%;
+  width: 65%;
+  height: 90vh;
+}
+.githubBut {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #6699ff;
+  border: 0px;
+  color: white;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.title {
+  z-index: 3;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  margin-left: -100px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  width: 200px;
+  height: 20px;
+}
+.content {
+  z-index: 2;
+  position: absolute;
+  left: 2%;
+  top: 200px;
+  width: 50%;
+  height: 200px;
+}
+.content1 {
+  color: white;
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+.content2 {
+  color: #aaa;
+  line-height: 30px;
+  letter-spacing: 2px;
+  width: 85%;
+}
+.nav {
+  position: absolute;
+  top: 40px;
+  left: 2%;
+  z-index: 3;
+  display: flex;
+  width: 300px;
+  height: 30px;
+  color: white;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.nav > div {
+  width: 30px;
+  flex: none;
+}
+.nav > div > span {
+  cursor: pointer;
+}
+.arrow {
+  position: relative;
+  top: -7px;
+  left: 20px;
+  -webkit-transform: rotate(90deg);
+     -moz-transform: rotate(90deg);
+       -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+  color: #ccc;
+}
+.home > h3,
+.standard > h3 {
+  background: blue;
+  position: relative;
+  bottom: 8px;
+  width: 0px;
+  height: 3px;
+  margin: 15px auto;
+  -webkit-transition: width 0.6s;
+     -moz-transition: width 0.6s;
+       -o-transition: width 0.6s;
+          transition: width 0.6s;
+}
+.home {
+  -webkit-transition: color 0.6s;
+     -moz-transition: color 0.6s;
+       -o-transition: color 0.6s;
+          transition: color 0.6s;
+}
+.home:hover,
+.standard:hover {
+  color: blue;
+}
+.home:hover h3,
+.standard:hover h3 {
+  width: 28px;
+}
+.productCon,
+.educationCon {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 5px;
+  width: 200px;
+  padding-top: 5px;
+  padding-bottom: 5px; 
+  background-color: #fff;
+  opacity: 0;
+  border-radius: 5px;
+  -webkit-transition: opacity 0.2s ease-out;
+     -moz-transition: opacity 0.2s ease-out;
+       -o-transition: opacity 0.2s ease-out;
+          transition: opacity 0.2s ease-out;
+}
+.productCon > span,
+.educationCon > span {
+  flex: none;
+  height: 50px;
+  color: #000;
+  line-height: 50px;
+  padding-left: 15px;
+  border-bottom: 0.5px solid #ccc;
+}
+.productCon > span:hover,
+.educationCon > span:hover {
+  background-color: #CAE1FF;
+}
+@keyframes wave {
+  0%{
+    -webkit-transform:scale(1) rotate(-45deg);
+       -moz-transform:scale(1) rotate(-45deg);
+         -o-transform:scale(1) rotate(-45deg);
+            transform:scale(1) rotate(-45deg);
+  }
+  50%{
+    -webkit-transform:scale(1.07) rotate(-45deg);
+       -moz-transform:scale(1.07) rotate(-45deg);
+         -o-transform:scale(1.07) rotate(-45deg);
+            transform:scale(1.07) rotate(-45deg);
+  }
+  100%{
+    -webkit-transform:scale(1) rotate(-45deg);
+       -moz-transform:scale(1) rotate(-45deg);
+         -o-transform:scale(1) rotate(-45deg);
+            transform:scale(1) rotate(-45deg);
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>No.8</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="backWave"></div>
+<div class="backWave"></div>
+<div id="man"></div>
+<div class="nav">
+  <div class="home"><span>首页</span><h3></h3></div>
+  <div class="standard"><span>规范</span><h3></h3></div>
+  <div class="product"><span>产品</span><div class="arrow"> > </div>
+    <div class="productCon">
+      <span>百度图说</span>
+      <span>Echarts Gallery</span>
+      <span>Echarts 扩展</span>
+      <span>Visual DL</span>
+      <span>Echarts</span>
+      <span>Echarts GL</span>
+      <span>MapV</span>
+      <span>Zrender</span>
+      <span class="last">Clay GL</span>
+    </div>
+  </div>
+  <div class="education"><span>教育</span><div class="arrow"> > </div>
+    <div class="educationCon">
+      <span>可视化专栏</span>
+      <span>Echarts & WebVR学院</span>
+      <span class="last">论文</span>
+    </div>
+  </div>
+</div>
+<div class="githubBut">Github</div>
+<div class="title">ECharts数据可视化实验室</div>
+<div class="content">
+  <div class="content1">ECharts数据可视化实验室</div>
+  <div class="content2">由百度 ECharts 团队创建，联合公司内外众多数据可视化从业人组成的技术研究虚拟组织，致力于数据可视化的相关研究、教育普及、产品研发及生态建设。</div>
+</div>
+
+<script src="js/lottie.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script>
+    lottie.loadAnimation({
+        path:'json/data.json',   
+        loop:true,
+        autoplay:true,
+        renderer:'canvas',  
+        container:document.getElementById('man')
+    }); 
+    displayCon(".product > span",".productCon");
+    displayCon(".education > span",".educationCon");
+    $(".last").css("border-bottom","0px");
+
+    function displayCon(span,con){
+      var flag = false;
+      $(span).hover(function(){
+        $(con).css("opacity",1);
+      });
+      $(span).mouseleave(function(){
+        setTimeout(function(){
+          if(!flag)
+            $(con).css("opacity",0);
+        },200); 
+      });
+      $(con).hover(function(){
+        flag = true;
+        if(Number($(con).css("opacity")) !== 0)
+          $(con).css("opacity",1);
+        if(con == ".productCon")
+          $(".educationCon").css("display","none");
+      });
+      $(con).mouseleave(function(){
+        flag = false;
+        $(con).css("opacity",0);
+        $(".educationCon").css("display","flex");
+      });
+    }
+</script>
+</body>
+</html>

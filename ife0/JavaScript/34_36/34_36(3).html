@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>34_36(3)</title>
+</head>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+// 直线
+ctx.beginPath();
+ctx.strokeStyle = "#0066ff";
+ctx.lineWidth = "10";
+ctx.lineCap = "round";
+ctx.moveTo(150,110);
+ctx.lineTo(400,210);
+ctx.stroke();
+// 矩形
+ctx.fillStyle = "#983048";
+ctx.fillRect(10,10,100,100);
+// 圆
+var gradient1 = ctx.createRadialGradient(300,300,1,300,300,55);
+gradient1.addColorStop(0,"red");
+gradient1.addColorStop(1,"white");
+ctx.lineWidth = "1";
+ctx.beginPath();
+ctx.arc(300,300,50,0,2*Math.PI);
+ctx.fillStyle = gradient1;
+ctx.fill();
+// 文字
+var gradient2 = ctx.createLinearGradient(400,60,700,60);
+gradient2.addColorStop(0,"red");
+gradient2.addColorStop(0.5,"green");
+gradient2.addColorStop(1,"blue");
+ctx.beginPath();
+ctx.fillStyle = gradient2;
+ctx.font = "40px Arial";
+ctx.fillText("Hello Baidu IFE!",400,60);
+// 时钟
+var ctx1 = canvas.getContext("2d");
+drawClock();
+setInterval("drawClock()",1000);
+function drawClock(){
+  ctx1.clearRect(450,150,300,300);
+  // 时钟外圆
+  ctx1.beginPath();
+  ctx1.fillStyle = "#ffd700";
+  ctx1.arc(600,300,150,0,2*Math.PI);
+  ctx1.fill();
+  
+  // 时钟上的数字
+  ctx1.beginPath();
+  ctx1.fillStyle = "red";
+  ctx1.font = "20px Arial";
+  for(var i=1;i<=12;i++){
+  ctx1.fillText(i,595+Math.sin(i*(Math.PI/6))*140,310-Math.cos(i*(Math.PI/6))*140);
+  }
+  // 时针 分针 秒针
+  var date = new Date();
+  var h = date.getHours();
+  var m = date.getMinutes();
+  var s = date.getSeconds();
+  var hl = 100;
+  var ml = 120;
+  var sl = 140;
+
+  ctx1.lineWidth = "10";
+  ctx1.beginPath();
+  ctx1.strokeStyle = "#f2f2f2";
+  ctx1.moveTo(600,300);
+  ctx1.lineTo(600+Math.sin((h+m/60)/12*2*Math.PI)*hl,300-Math.cos((h+m/60)/12*2*Math.PI)*hl);
+  ctx1.stroke();
+  ctx1.lineWidth = "5";
+  ctx1.beginPath();
+  ctx1.strokeStyle = "#f2f2f2";
+  ctx1.moveTo(600,300);
+  ctx1.lineTo(600+Math.sin((m+s/60)/60*2*Math.PI)*ml,300-Math.cos((m+s/60)/60*2*Math.PI)*ml);
+  ctx1.stroke();
+  ctx1.lineWidth = "3";
+  ctx1.beginPath();
+  ctx1.strokeStyle = "#ee9572";
+  ctx1.moveTo(600,300);
+  ctx1.lineTo(600+Math.sin(s/60*2*Math.PI)*sl,300-Math.cos(s/60*2*Math.PI)*sl);
+  ctx1.stroke();
+
+  // 时钟中心
+  ctx1.beginPath();
+  ctx1.fillStyle = "#333";
+  ctx1.arc(600,300,5,0,2*Math.PI);
+  ctx1.fill();
+  
+}
+// 云
+ctx.beginPath();
+ctx.strokeStyle = "#333";
+ctx.strokeWidth = "3";
+ctx.arc(100,500,20,-Math.PI*1.2,-Math.PI/2);
+ctx.arc(120,480,20,-Math.PI,0);
+ctx.arc(140,500,20,-Math.PI/2,Math.PI*0.2);
+ctx.closePath();
+ctx.stroke();
+</script>
+</body>
+</html>

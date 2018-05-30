@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>34_36(4)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      overflow-x: hidden;
+      background-color: #ccc;
+    }
+    #container {
+      display: flex;
+      margin: 0 auto;
+      border-radius: 5px;
+      width: 70%;
+      height: 10vh;
+      padding: 10px;
+    }
+    .graphCon {
+      display: flex;
+      justify-content: space-around;
+      margin: 0 auto;
+      border-radius: 5px;
+      width: 70%;
+    }
+    #svg-graph {
+      flex: none;
+    }
+    #canvas-graph {
+      flex: none;
+    }
+    table {
+      cursor: pointer;
+      margin: 0 auto;
+      border-collapse:collapse;
+    }
+    th,td {
+      width: 50px;
+      text-align: center;
+    }
+    tr td:nth-of-type(1),
+    tr td:nth-of-type(2) {
+      width: 70px;
+    }
+    #region {
+      flex: 1;
+      background-color: #edd08e;
+    }
+    #product {
+      flex: 1;
+      background-color: #ccfc62;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <div id="region">
+    <label><input id="regionAll-checkbox" type="checkbox" value="全选">全选</label><br>
+    <label><input type="checkbox" value="华北">华北</label>
+    <label><input type="checkbox" value="华东">华东</label>
+    <label><input type="checkbox" value="华南">华南</label>
+  </div>
+  <div id="product">
+    <label><input id="productAll-checkbox" type="checkbox" value="全选">全选</label><br>
+    <label><input type="checkbox" value="手机">手机</label>
+    <label><input type="checkbox" value="笔记本">笔记本</label>
+    <label><input type="checkbox" value="智能音箱">智能音箱</label>
+  </div>
+</div>
+<div class="graphCon">
+  <canvas id="lines-graph" width="400" height="250"></canvas> 
+  <svg id="svg-graph" xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="400" height="250"></svg> 
+  <canvas id="canvas-graph" width="400" height="250"></canvas> 
+</div>
+<table id="table-wrapper">
+</table>
+
+<script src="js/ifedata.js"></script>
+<script src="js/bar.js"></script>
+<script src="js/line.js"></script>
+<script src="js/checkbox.js"></script>
+<script src="js/table.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Love Me Or Not</title>
+  <link rel="stylesheet" type="text/css" href="animate.css">
+  <style>
+    #container {
+      position: relative;
+      width: 650px;
+      height: 550px;
+      background-color: #66ccff;
+    }
+    #container > input {
+      position: absolute;
+      border-radius: 5%;
+      width: 50px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+      border: 0px;
+    }
+    #love {
+      z-index: 3;
+      color: #eee;
+      background-color: #ff66cc;
+      font-size: 12px;
+      -webkit-animation-duration:2s;
+      -moz-animation-duration:2s;
+      -o-animation-duration:2s;
+      animation-duration:2s;
+      -webkit-animation-iteration-count:infinite;
+      -moz-animation-iteration-count:infinite;
+      -o-animation-iteration-count:infinite;
+      animation-iteration-count:infinite;
+    }
+    #notlove {
+      z-index: 2;
+      color: #333;
+      background-color: #999999;
+      font-size: 10px;
+    }
+    .showlove {
+      z-index: 4;
+      position: absolute;
+      left: 200px;
+      top: 200px;
+      width: 150px;
+      height: 100px;
+      background-color: #ffa500;
+      border-radius: 5%;
+      padding: 10px;
+      text-align: center;
+      color: #fff;
+    }
+    .mmd {
+      width: 55px;
+      height: 45px;
+      background-color: #ffd700;
+      border-radius: 10%;
+      position: absolute;
+      bottom: 10px;
+      left: 30%;
+      border: 0px;
+      color: #fff;
+      -webkit-animation-delay: 1s;
+      -moz-animation-delay: 1s;
+      -o-animation-delay: 1s;
+      animation-delay: 1s;
+      cursor: pointer;
+    }
+    .title {
+      font-size: 30px;
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      color: #fff;
+      animation-duration: 1.5s;
+      animation-iteration-count: 2;
+    }
+    @keyframes myZoomIn {
+      0%{opacity: 0;}
+      100%{opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <div class="title animated swing">小姐姐喜不喜欢我？</div>
+  <input id="love" type="button" class="animated tada" value="喜欢我">
+  <input id="notlove" type="button" class="animated zoomIn" value="不喜欢我">
+</div>
+<script src="jquery.min.js"></script>
+<script>
+var container = document.getElementById("container");
+var love = document.getElementById("love");
+var notlove = document.getElementById("notlove");
+var count = 0;      //记录不喜欢次数
+var lovepos = {};     //喜欢我 标签的位置
+var lastpos = {x:0,y:0};   //  记录上一个不喜欢我标签的位置
+var pos = {x:0,y:0};   //  记录当前不喜欢我标签的位置
+// 容器的宽高
+var width = 600;
+var height = 500;
+// 不喜欢我 标签监听事件
+notlove.onmouseover = function(){
+  count++;
+  $("#notlove").css("animation","");
+  console.log("这是你第"+count+"次拒绝我 ):");
+  generateNotLove();
+  notlove.style.left = pos.x + "px";
+  notlove.style.top = pos.y + "px";
+  console.log($("#notlove").css("animation"));    // 非得加上这句话才能实现每次出现时的淡入效果，我也不知道为什么
+  $("#notlove").css("animation","myZoomIn 0.8s");
+}
+// 喜欢我 点击事件
+love.onclick = function(){
+  var showlove = document.createElement("div");
+  showlove.setAttribute("class","showlove animated jello");
+  showlove.innerHTML = "Yeah你终于<br>喜欢我了 :)";
+  var mmd = document.createElement("input");
+  mmd.setAttribute("class","mmd animated bounceInLeft");
+  mmd.setAttribute("type","button");
+  mmd.setAttribute("value","么么😘");
+  showlove.appendChild(mmd);
+  container.appendChild(showlove);
+  mmd.onclick = function(){
+    $(".showlove").attr("class","showlove");
+    $(".showlove").addClass("animated zoomOut");
+    $(".showlove").remove();        // 在chrome里会留下边缘 待鼠标移除网页页面后边缘自动消失  神奇~~
+  }
+}
+start();
+function start(){
+  generateLove();
+  generateNotLove();
+  love.style.left = lovepos.x + "px";
+  love.style.top = lovepos.y + "px";
+  notlove.style.left = pos.x + "px";
+  notlove.style.top = pos.y + "px";
+}
+
+// 设置喜欢我标签的位置
+function generateLove(){
+  lovepos.x = 0.5 * width;
+  lovepos.y = 0.5 * height;
+
+}
+// 随机生成“不喜欢我”标签位置
+function generateNotLove(){
+  // 设置当前位置和上一个位置
+  var random1 = Math.random();
+  var random2 = Math.random();
+  var x = pos.x;
+  var y = pos.y;
+  lastpos.x = x;
+  lastpos.y = y;
+  do{
+    pos.x = Math.round(random1 * width);
+    pos.y = Math.round(random2 * height);
+  }while(Math.abs(pos.x-lastpos.x)<30 && Math.abs(pos.y-lastpos.y)<30 && Math.abs(pos.x-lovepos.x)<30 && Math.abs(pos.y-lovepos.y)<30)
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>股票数据图</title>
+  <style>
+    #main {
+      width: 1000px;
+      height: 500px;
+    }
+  </style>
+</head>
+<div id="main"></div>
+<body>
+<script src="../echarts.js"></script>
+<script src="../jquery.min.js"></script>
+<script src="data-AAPL.js"></script>
+<script>
+var myEcharts = echarts.init(document.getElementById("main"));
+
+var data = splitData(arrayAAPL);
+// 处理数据 将不同类的股票数据的日期和股票值单独存放在一个category和value数组中
+function splitData(array){
+  var categoryAAPL = [];
+  // 已有数据中的顺序诶 [开盘值 最高值 最低值 收盘值]
+  // echarts要求的顺序为[开盘值, 收盘值, 最低值, 最高值]）
+  var value = [];
+  for(var i=0;i<array.length;i++){
+    // 调换最高值和收盘值的位置
+    var temp = array[i][3];
+    array[i][3] = array[i][5];
+    array[i][5] = temp;
+    categoryAAPL.push(array[i].splice(0,1)[0]);
+    value.push(array[i].splice(1,4));
+  }
+  return {
+    categoryAAPL : categoryAAPL,
+    value: value
+  }
+}
+// 计算过去n天的平均值  n取 5 10 20  取开盘值
+function calMA(n){
+  var result = [];
+  for(var i=0;i<data.value.length;i++){
+    if(i < n-1){
+      result.push("-");
+      continue;
+    }
+    var sum = 0;
+    for(var j=0;j<n;j++){
+      sum += Number(data.value[i-j][1]);
+    }
+    result.push(sum/n);
+  }
+  return result;
+}
+myEcharts.setOption({
+  dataZoom:[
+    {
+      id: "dataZoomX",
+      type: "slider",
+      xAxisIndex: [0],
+      filterMode: "filter",
+      start: 30,
+      end: 60
+    }
+  ],
+  title:{
+    data: "股票数据图"
+  },
+  tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross'
+        }
+    },
+  legend:{
+    data: ["K","MA5","MA10","MA20"]
+  },
+  xAxis:{
+    data: data.categoryAAPL
+  },
+  yAxis:{
+    min: 150
+  },
+  series:[{
+    name: "K",
+    type: "candlestick",
+    data: data.value,
+    itemStyle: {
+      color0: "green"
+    },
+    markLine: {
+      symbol: ["none","none"],
+      lineStyle: {
+        color: "red"
+      },
+      data: [
+        {
+          name: "min",
+          type: "min"
+        },
+        {
+          name: "max",
+          type: "max"
+        },
+        [
+          // 从最小值到最大值
+          {
+            name: "from min to max",
+            type: "min"
+          },
+          {
+            type: "max"
+          }
+        ]
+      ]
+    }
+  },{
+    name: "MA5",
+    type: "line",
+    data: calMA(5)
+  },{
+    name: "MA10",
+    type: "line",
+    data: calMA(10)
+  },{
+    name: "MA20",
+    type: "line",
+    data: calMA(20)
+  }]
+});
+</script>
+</body>
+</html>

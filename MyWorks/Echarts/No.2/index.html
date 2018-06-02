@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Echarts入门 简单柱形图和折线图</title>
+  <style>
+    #main {
+      width: 600px;
+      height: 600px;
+      background-color: rgb(205,222,231);
+    }
+  </style>
+</head>
+<body>
+<div id="main"></div>
+<script src="../echarts.js"></script>
+<script>
+  var myEcharts = echarts.init(document.getElementById("main"));
+  var option = {
+    title: {
+      left: 40,
+      text: "What's my credit score?",
+      subtext: "Puerto Rico,%decrease on a year earlier",
+      subtextStyle: {
+        color: "#333",
+        fontWeight: "bold"
+      }
+    },
+    tooltip: {},
+    legend: {
+      data: ["Population","GDP"],
+      left: 40,
+      top: 50
+    },
+    xAxis: [{
+      position: "bottom",
+      name: "Sources:World Bank;Census Bureau;EIU",
+      nameLocation: "middle",
+      nameGap: 40,
+      data: ["2006","07","08","09","10","11","12","13","14","15"],
+      axisTick: {
+        show: false
+      }
+    }],
+    yAxis: {
+      position: "right",
+      inverse: true,
+      axisLine: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      }
+    },
+    grid: {
+      left: 50,
+      top: 80
+    },
+    series: [{
+      color: "rgb(0,82,109)",
+      name: "Population",
+      type: "bar",
+      data: [5, 20, 36, 10, 10, 20, 34, 45, 67, 23]
+    },{
+      color: "rgb(0,164,220)",
+      name: "GDP",
+      type: "bar",
+      data: [5, 20, 36, 10, 10, 20, 45, 90, 12, 38]
+    }]
+  };
+  myEcharts.setOption(option);
+</script>
+</body>
+</html>

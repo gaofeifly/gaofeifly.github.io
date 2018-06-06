@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>37_38我是精明小卖家(三)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      /*overflow: hidden;*/
+    }
+    #container {
+      margin: 0 auto;
+      background-color: #ccc;
+      border-radius: 5px;
+      width: 100%;
+      height: 100vh;
+      padding: 10px;
+    }
+    th,td {
+      position: relative;
+      width: 100px;
+      height: 30px;
+      text-align: left;
+    }
+    tr td:nth-of-type(1),
+    tr td:nth-of-type(2) {
+      width: 70px;
+    }
+    div:nth-of-type(1) {
+      background-color: #edd08e;
+    }
+    div:nth-of-type(2) {
+      background-color: #ccfc62;
+    }
+    input[type=text] {
+      width: 35px;
+    }
+    #saveData {
+      width: 100px;
+      height: 40px;
+      border-radius: 10px;
+      border: 0;
+      color: #fff;
+      margin-left: 100px;
+      margin-top: 30px;
+      background-color: #6666ff;
+      cursor: pointer;
+    }
+    .okImg,
+    .noImg,
+    .editImg {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      top: 7px;
+      cursor: pointer;   
+    }
+    .okImg {
+      right: 25px;
+    }
+    .noImg {
+      right: 5px;
+    }
+    .editImg {
+      right: 15px;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="region">
+    <label><input id="regionAll-checkbox" type="checkbox" value="全选" checked>全选</label><br>
+    <label><input type="checkbox" value="华北">华北</label>
+    <label><input type="checkbox" value="华东">华东</label>
+    <label><input type="checkbox" value="华南">华南</label>
+  </div>
+  <div id="product">
+    <label><input id="productAll-checkbox" type="checkbox" value="全选" checked>全选</label><br>
+    <label><input type="checkbox" value="手机">手机</label>
+    <label><input type="checkbox" value="笔记本">笔记本</label>
+    <label><input type="checkbox" value="智能音箱">智能音箱</label>
+  </div>
+  <table id="table-wrapper">
+  </table>
+  <input id="saveData" type="button" value="保存">
+</div>
+
+<script src="js/ife31data.js"></script>
+<script src="js/checkbox.js"></script>
+<script src="js/table.js"></script>
+<script src="js/dataProcess.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

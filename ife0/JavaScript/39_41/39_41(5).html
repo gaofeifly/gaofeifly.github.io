@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>39_41(5)</title>
+</head>
+<body>
+  <button id="a">A</button>
+  <button id="b">B</button>
+  <button id="c">C</button>
+
+  <button id="d">D</button>
+  <button id="e">E</button>
+  <button id="f">F</button>
+
+
+  <div id="contABC"></div>
+  <div id="contDEF"></div>
+</body>
+
+<script>
+render();
+var stateobj = {"abc":"","def":""};
+var abc = ["a","b","c"];
+var def = ["d","e","f"];
+
+window.onhashchange = render;
+// 按钮点击事件
+document.body.onclick = function(event){
+  var event = event || window.event;
+  var target = event.target;
+
+  if(target.nodeName.toLowerCase() == "button"){
+    if(abc.indexOf(target.id) > -1){
+      stateobj.abc = target.id;
+    }
+    if(def.indexOf(target.id) > -1){
+      stateobj.def = target.id;
+    }
+    if(history.state){
+      history.replaceState(stateobj,null,stateobj.abc + stateobj.def);
+    }
+    else{
+      history.pushState(stateobj,null,stateobj.abc + stateobj.def);
+    }
+  }
+  render();
+}
+// 渲染函数
+function render(){
+  var divABC = document.getElementById("contABC");
+  var divDEF = document.getElementById("contDEF");
+  if(history.state){
+    if(history.state.abc !== ""){
+      divABC.innerHTML = document.getElementById(history.state.abc).innerHTML;
+    }
+    if(history.state.def !== ""){
+      divDEF.innerHTML = document.getElementById(history.state.def).innerHTML;
+    }
+  }
+}
+</script>
+</html>

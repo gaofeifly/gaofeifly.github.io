@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>39_41(1)</title>
+</head>
+<body>
+  <button id="a">A</button>
+  <button id="b">B</button>
+  <button id="c">C</button>
+  <div id="cont"></div>
+</body>
+
+<script>
+render();
+window.onhashchange = render;
+// 按钮点击事件
+document.body.onclick = function(event){
+  var event = event || window.event;
+  var target = event.target;
+  if(target.nodeName.toLowerCase() == "button")
+    location.hash = "#" + target.id;
+}
+// 渲染函数
+function render(){
+  var div = document.getElementById("cont");
+  if(getHashState().length == 1)
+    div.innerHTML = document.getElementById(getHashState()).innerHTML;
+}
+// 解析hash 获取状态
+function getHashState(){
+  if(location.hash.length > 0)
+    return location.hash.substr(1,location.hash.length-1);
+  else
+    return "";
+}
+</script>
+</html>

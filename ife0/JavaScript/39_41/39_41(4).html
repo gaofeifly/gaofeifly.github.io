@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>39_41(4)</title>
+</head>
+<body>
+  <button id="a">A</button>
+  <button id="b">B</button>
+  <button id="c">C</button>
+  <div id="cont"></div>
+</body>
+
+<script>
+render();
+var stateobj;
+window.onhashchange = render;
+// 按钮点击事件
+document.body.onclick = function(event){
+  var event = event || window.event;
+  var target = event.target;
+
+  if(target.nodeName.toLowerCase() == "button"){
+    stateobj = target.id;
+    if(history.state)
+      history.replaceState(stateobj,null,target.id+".html");
+    else
+      history.pushState(stateobj,null,target.id+".html");
+  }
+  render();
+}
+// 渲染函数
+function render(){
+  var div = document.getElementById("cont");
+  if(history.state)
+    div.innerHTML = document.getElementById(history.state).innerHTML;
+}
+</script>
+</html>

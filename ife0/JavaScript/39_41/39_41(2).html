@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>39_41(2)</title>
+</head>
+<body>
+<button id="a">A</button>
+<button id="b">B</button>
+<button id="c">C</button>
+
+<button id="d">D</button>
+<button id="e">E</button>
+<button id="f">F</button>
+
+
+<div id="contABC"></div>
+<div id="contDEF"></div>
+
+<script>
+render();
+window.onhashchange = render;
+var abc = ["a","b","c"];
+var def = ["d","e","f"];
+// 按钮点击事件     两个都存在时 格式为abc在前def在后
+document.body.onclick = function(event){
+  var event = event || window.event;
+  var target = event.target;
+  if(target.nodeName.toLowerCase() == "button")
+    setHash(target);
+}
+// 渲染函数
+function render(){
+  var div1 = document.getElementById("contABC");
+  var div2 = document.getElementById("contDEF");
+  var hash = getHashState();
+  if(hash.length == 1){
+    if(abc.indexOf(hash) > -1)
+      div1.innerHTML = document.getElementById(hash).innerHTML;
+    else
+      div2.innerHTML = document.getElementById(hash).innerHTML;
+  }else if(hash.length == 2){
+    div1.innerHTML = document.getElementById(hash.substr(0,1)).innerHTML;
+    div2.innerHTML = document.getElementById(hash.substr(1,1)).innerHTML;
+  }
+}
+// 解析hash 获取状态
+function getHashState(){
+  if(location.hash.length > 0)
+    return location.hash.substr(1,location.hash.length-1);
+  else
+    return "";
+}
+// 设置hash
+function setHash(target){
+  var hash = getHashState();
+  if(hash.length == 0)
+    location.hash = "#" + target.id;
+  else if(hash.length == 1){
+    if(abc.indexOf(hash) > -1 && abc.indexOf(target.id) > -1)
+      location.hash = "#" + target.id;
+    else if(abc.indexOf(hash) > -1 && def.indexOf(target.id) > -1)
+      location.hash = "#" + hash + target.id;
+    else if(def.indexOf(hash) > -1 && abc.indexOf(target.id) > -1)
+      location.hash = "#" + target.id + hash;
+    else
+      location.hash = "#" + target.id;
+  }
+  else{
+    if(abc.indexOf(target.id) > -1)
+      location.hash = "#" + target.id + hash.substr(1,1);
+    else{
+      location.hash = "#" + hash.substr(0,1) + target.id;
+    }
+  }
+}
+</script>
+
+</body>
+</html>

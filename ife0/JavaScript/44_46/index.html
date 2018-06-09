@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>index</title>
+</head>
+<body>
+<script src="js/es5.js"></script>
+
+<script>
+var ifeRestaurant = new Restaurant({
+    money: 1000000,
+    seatNum: 20,
+    staff: []
+});
+Waiter.getInstance("ife-waiter","300000");
+ifeRestaurant.hire(Waiter.getInstance());
+Cook.getInstance("ife-cook","666");
+ifeRestaurant.hire(Cook.getInstance());
+console.log(ifeRestaurant.staff);
+// 菜单
+var dishList = [];
+dishList.push(new Dishes("鱼香肉丝",100,200));
+dishList.push(new Dishes("宫保鸡丁",200,250));
+dishList.push(new Dishes("西红柿炒鸡蛋",66,100));
+dishList.push(new Dishes("醋溜白菜",100,200));
+
+var CustomerQueue = [];     // 数组头表示队头
+var customer1 = new Customer();
+var customer2 = new Customer();
+CustomerQueue.push(customer1);
+CustomerQueue.push(customer2);
+while(CustomerQueue.length > 0){
+  CustomerQueue[0].callWaiter();
+  CustomerQueue[0].order(dishList[Math.floor(Math.random()*4)].name);
+  CustomerQueue[0].eat();
+  CustomerQueue.shift();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>index</title>
+</head>
+<body>
+<!-- <script src="js/es5.js"></script> -->
+<script src="js/es6.js"></script>
+
+<script>
+var ifeRestaurant = new Restaurant({
+    money: 1000000,
+    seatNum: 20,
+    staff: []
+});
+
+var newCook = new Cook("Tony", 10000);
+ifeRestaurant.hire(newCook);
+
+console.log(ifeRestaurant.staff);
+
+ifeRestaurant.fire(newCook);
+console.log(ifeRestaurant.staff);
+</script>
+
+
+</body>
+</html>

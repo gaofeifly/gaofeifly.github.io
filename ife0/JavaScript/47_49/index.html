@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>index</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+</head>
+<body>
+  <div class="github"><a href="#" target="https://github.com/Elanpro/Elanpro.github.io/blob/master/ife0/JavaScript/47_49/index.html">Github</a></div>
+  <span class="tAppoint">以两秒钟为一个时间单位</span>
+  <!-- 剩余现金 -->
+  <div id="money-left">
+    <span>餐厅现金数量</span>
+    <span class="money">100000</span>
+  </div>
+  <!-- 厨师 -->
+  <div id="cook">
+    <div class="cookCon">
+      <img src="images/cook.png">
+      <span class="cook-state">空闲</span>
+      <span class="cook-left-time"></span>
+      <div class="cook-dishes"></div>
+    </div>
+  </div>
+  <!-- 服务员 -->
+  <div id="waiter">
+    <img src="images/waiter.png">
+  </div>
+  <!-- 顾客 -->
+  <div id="customer">
+    <div class="cusCon">
+      <img class="cus-img" src="images/customer.png">
+      <div class="customer-list">
+        <span>排队顾客</span>
+      </div>
+      <div class="customer-dishes"></div>
+      <div class="customer-state">顾客状态<br></div>
+    </div>
+  </div>
+  <!-- 加载动画一 -->
+  <div id="animate-one">
+    <div class="animateCon">
+      <div class="circle-out"></div>
+      <div class="circle-in"></div>
+    </div>
+  </div>
+
+<script src="js/base.js"></script>
+<script src="js/cook.js"></script>
+<script src="js/waiter.js"></script>
+<script src="js/customer.js"></script>
+<script src="js/app.js"></script>
+
+
+</body>
+</html>

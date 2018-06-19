@@ -1,0 +1,354 @@
+body {
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: orange;
+}
+.github {
+  width: 80px;
+  height: 40px;
+  border: 0px;
+  border-radius: 20px;
+  background-color: #6666ff;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+.github a:link,
+.github a:hover,
+.github a:active,
+.github a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+.tAppoint {
+  position: absolute;
+  right: 10px;
+  top: 100px;
+  width: 150px;
+  font-size: 16px;
+}
+.money-up {
+  z-index: 3;
+  position: absolute;
+  top: 50px;
+  left: 150px;
+  color: red;
+  font-size: 18px;
+  animation-duration: 2s;
+}
+#money-left {
+  z-index: 2;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  background-color: #ccccff;
+  width: 100px;
+  height: 70px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#money-left > span:nth-of-type(1) {
+  color: #6633ff;
+  font-size: 14px;
+}
+#money-left > span:nth-of-type(2) {
+  font-size: 17px;
+  color: red;
+}
+#cook {
+  width: 220px;
+  height: 220px;
+  position: absolute;
+  top: 330px;
+  left: 30px;
+  background-color: #ccccff;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#cook-img {
+  position: absolute;
+  top: 120px;
+  left: 30px;
+  width: 120px;
+  height: 200px;
+}
+.cookCon {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+.cookCon img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.cook-dishes {
+  position: absolute;
+  top: 10px;
+  left: 170px;
+  width: 150px;
+  height: 310px;
+  background-color: #ccccff;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.cook-dishes span {
+  color: #6633ff;
+  font-size: 14px;
+  width: 180px;
+}
+.cook-state {
+  color: #6633ff;
+  position: absolute;
+  right: 0;
+}
+.cook-left-time {
+  color: #6633ff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.cook-dishes img {
+  width: 20px;
+  height: 20px;
+}
+.cook-dishes div {
+  display: flex;
+  justify-content: center;
+}
+.waiter-img {
+  position: absolute;
+  top: 120px;
+  left: 600px;
+  transition: top,left 1s;
+}
+.waiter-img{
+  z-index: 5;
+  width: 60px;
+  height: 100px;
+  opacity: 0;
+}
+#waiterCon {
+  position: absolute;
+  left: 330px;
+  top: 10px;
+  width: 320px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: #ccccff;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-column-gap:15px;
+  padding: 10px;
+}
+.waiter-div {
+  width: 150px;
+  height: 25px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#add-waiter {
+  width: 150px;
+  height: 30px;
+}
+.waiter-pos-span {
+  color: #6633ff;
+}
+#waiterCon img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.waiter-img img {
+  width: 100%;
+  height: 100%;
+}
+#customer-one,
+#customer-two,
+#customer-three {
+  position: absolute;
+  right: 200px;
+  width: 300px;
+  height: 160px;
+}
+#customer-one {
+  top: 10px;
+}
+#customer-two {
+  top: 200px;
+}
+#customer-three {
+  top: 400px;
+}
+.cusCon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.cus-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+}
+.customer-dishes {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 140px;
+  height: 100px;
+  background-color: #ccccff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 12px;
+  text-align: center;
+}
+.customer-dishes img {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+}
+.customer-dishes div {
+  position: relative;
+}
+.customer-dishes span {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  color: #6633ff;
+}
+.customer-state {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+  height: 50px;
+  background-color: #ccccff;
+  border-radius: 5px;
+}
+.customer-state span {
+  color: #6633ff;
+}
+#cus-wait {
+  position: absolute;
+  right: 10px;
+  bottom: 30px;
+  width: 150px;
+  height: 350px;
+  background-color: #ccccff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+.animate {
+  display: none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+#animate-one {
+  right: 350px;
+  top: 50px;
+}
+#animate-two {
+  right: 350px;
+  top: 200px;
+}
+#animate-three {
+  right: 350px;
+  top: 400px;
+}
+.animateCon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.circle-in {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #6699ff;
+  animation: circleBounce 1.6s infinite;
+  animation-delay: -0.8s;
+  transform: scale(0);
+}
+.circle-out {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccccff;
+  animation: circleBounce 1.6s infinite;
+}
+.all-ok {
+  z-index: 3;
+  position: absolute;
+  top: 100px;
+  left: 400px;
+  font-size: 30px;
+  color: red;
+  animation-iteration-count: 3;
+}
+.add-wait {
+  z-index: 3;
+  position: absolute;
+  top: 180px;
+  right: 10px;
+  font-size: 18px;
+  color: red;
+  transform-origin: 0 0;
+  animation: leftDown ease-in-out;
+}
+@keyframes circleBounce {
+  0%,100%{
+    transform: scale(0.0);
+  }
+  50%{
+    transform: scale(1);
+  }
+}
+@keyframes leftDown {
+  0%{
+    opacity: 0.5;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.5;
+  }
+}

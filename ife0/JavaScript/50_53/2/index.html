@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>index-v1.3</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+</head>
+<body>
+  <div class="github"><a href="#" 
+  target="https://github.com/Elanpro/Elanpro.github.io/blob/master/ife0/JavaScript/50_53">Github</a></div>
+  <span class="tAppoint">以一秒钟为一个时间单位，每20个时间单位来5个人，最多十个人排队</span>
+  <!-- 剩余现金 -->
+  <div id="money-left">
+    <span>餐厅现金数量</span>
+    <span class="money">100000</span>
+  </div>
+
+  <!-- 厨师 -->
+  <img id="cook-img" src="images/cook.png">
+  <!-- 添加和删除厨师 -->
+  <div id="cook">
+    <input id="add-cook" type="button" value="雇佣一个厨师">
+  </div>
+  <div class="cook-dishes"></div>
+
+  <!-- 服务员 -->
+  <div class="waiter-img">
+    <img src="images/waiter.png">
+  </div>
+  <div class="waiter-img">
+    <img src="images/waiter.png">
+  </div>
+  <div class="waiter-img">
+    <img src="images/waiter.png">
+  </div>
+  <div class="waiter-img">
+    <img src="images/waiter.png">
+  </div>
+  <div class="waiter-img">
+    <img src="images/waiter.png">
+  </div>
+  <!-- 添加和删除服务员 -->
+  <div id="waiterCon">
+    <input id="add-waiter" type="button" value="雇佣一个服务员">
+  </div>
+
+  <!-- 顾客 -->
+  <div id="customer-one">
+    <div class="cusCon">
+      <img class="cus-img" src="images/customer.png">
+      <div class="customer-dishes"></div>
+      <div class="customer-state">顾客状态<br></div>
+    </div>
+  </div>
+  <div id="customer-two">
+    <div class="cusCon">
+      <img class="cus-img" src="images/customer.png">
+      <div class="customer-dishes"></div>
+      <div class="customer-state">顾客状态<br></div>
+    </div>
+  </div>
+  <div id="customer-three">
+    <div class="cusCon">
+      <img class="cus-img" src="images/customer.png">
+      <div class="customer-dishes"></div>
+      <div class="customer-state">顾客状态<br></div>
+    </div>
+  </div>
+  <div id="cus-wait">
+    <span>排队顾客</span>
+  </div>
+
+  <!-- 加载动画 -->
+  <div class="animate" id="animate-one">
+    <div class="animateCon">
+      <div class="circle-out"></div>
+      <div class="circle-in"></div>
+    </div>
+  </div>
+  <div class="animate" id="animate-two">
+    <div class="animateCon">
+      <div class="circle-out"></div>
+      <div class="circle-in"></div>
+    </div>
+  </div>
+  <div class="animate" id="animate-three">
+    <div class="animateCon">
+      <div class="circle-out"></div>
+      <div class="circle-in"></div>
+    </div>
+  </div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/cook.js"></script>
+<script src="js/waiter.js"></script>
+<script src="js/customer.js"></script>
+<script src="js/app.js"></script>
+
+
+</body>
+</html>

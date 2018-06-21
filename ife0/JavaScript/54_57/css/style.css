@@ -1,0 +1,19 @@
+.container {
+  padding: 20px;
+  background-color: green;
+}
+.field {
+  position: relative;
+  border: 1px solid white;
+}
+.player {
+  position: absolute;
+  border-radius: 50%;
+  border:0.5px solid black;
+  font-size: 6px;
+  text-align: center;
+  color: white;
+}
+canvas {
+  z-index: 2;
+}

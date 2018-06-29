@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>足球小将</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div id="stage"></div>
+<!-- <input id="restart" type="button" value="调整大小后重新开始"> -->
+
+  <!-- 足球设置 -->
+  <div id="ball-set">
+    <input id="ball-x-set" type="text" placeholder="位置x(0~120米)">
+    <input id="ball-y-set" type="text" placeholder="位置y(0~75米)">
+    <input id="setball" type="button" value="设置足球位置">
+  </div>
+  <!-- 运动员设置 -->
+  <div id="player-set">
+    <select id="player-list"></select>
+    <input id="player-x-set" type="text" placeholder="位置x(0~120米)">
+    <input id="player-y-set" type="text" placeholder="位置y(0~75米)">
+    <input id="setplayer" type="button" value="设置运动员位置">
+    <div id="player-kick1" class="slider"></div>
+    <div id="player-kick2" class="slider"></div>
+    <div id="player-operate">
+      <input id="gotoball" type="button" value="跑向足球">
+      <input id="stopplayer" type="button" value="运动员停下">
+      <input id="kick" type="button" value="踢球">
+    </div>
+  </div>
+  <!-- 添加运动员 -->
+  <div id="player-add">
+    <input id="player-x-set-add" type="text" placeholder="位置x(0~120米)">
+    <input id="player-y-set-add" type="text" placeholder="位置y(0~75米)">
+    <input id="player-vnum" type="text" placeholder="45速度值(1~99)">
+    <input id="player-angle" type="text" placeholder="0运动方向(0~2pi)">
+    <input id="player-explosive" type="text" placeholder="45爆发力(1~99)">
+    <input id="player-physical" type="text" placeholder="45体力(1~99)">
+    <input id="player-tech" type="text" placeholder="45技术值(1~99)">
+    <input id="player-energy" type="text" placeholder="45力量值(1~99)">
+    <input id="addplayer" type="button" value="添加运动员">
+
+</div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/player.js"></script>
+<script src="js/ball.js"></script>
+<script src="js/football-field-factory.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

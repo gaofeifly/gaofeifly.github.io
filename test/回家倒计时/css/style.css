@@ -108,7 +108,7 @@ option {
   transform-style: preserve-3d;
   -webkit-perspective: 500; 
           perspective: 500;
-  overflow:hidden;
+  /*overflow:hidden;*/
 }
 #time-title > div {
   position: absolute;

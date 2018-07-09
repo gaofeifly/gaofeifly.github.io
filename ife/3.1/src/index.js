@@ -47,7 +47,7 @@ var list = san.defineComponent({
     template: `
         <div class="list" on-click="operateClick">
             <div>
-                <span class="list-content" style="color:{{ contentColor }}">{{ content }}</span>
+                <span class="list-content">{{ content }}</span>
                 <img s-if="imgDis == 1" class="list-img" src="{{ imgSrc }}">
             </div>
         </div>
@@ -59,14 +59,9 @@ var list = san.defineComponent({
             value: "",
             flag: false,
             imgDis: 1,       // 0 无箭头 1 有箭头
-            contentColor: "black"
         };
     },
     operateClick: function(){
-        if(this.data.get("contentColor") == "black")
-            this.data.set("contentColor","blue");
-        else
-            this.data.set("contentColor","black");
         if(this.data.get("imgDis") == 1){
             this.data.set("flag",false);
             this.searchChild(this.data.get("value"),data,1);
@@ -113,7 +108,7 @@ var cascadedComp = san.defineComponent({
                 <span>{{ chooseValue }}</span>
                 <img class="choose-box-img" src="{{ imgSrc }}" style='{{ listsDisplay ? "transform:rotate(180deg)" : ""}}'>
             </div>
-            <div id="lists" s-if="listsDisplay" s-transition="operateTransition">
+            <div on-click="listsConClick" id="lists" s-if="listsDisplay" s-transition="operateTransition">
                 <div id="lists-con">
                     <div id="triangle"></div>
                     <div id="lists-first"><list s-for="data in datasOne" content="{{ data.label }}" value="{{ data.value }}" imgDis="{{ data.imgDis }}"></list></div>
@@ -156,7 +151,6 @@ var cascadedComp = san.defineComponent({
         };
     },
     operateClick: function(){
-        // document.getElementById("choose-box-img").style.transform="rotate(180deg)";
         this.data.set("datasTwo",[]);
         this.data.set("datasThree",[]);
         this.data.set("listsDisplay",!this.data.get("listsDisplay"));
@@ -166,7 +160,28 @@ var cascadedComp = san.defineComponent({
             datas[i] = {};
             datas[i].value = data[i].value;
             datas[i].label = data[i].label;
+            datas[i].imgDis = 1;
             this.data.set("datasOne",datas);
+        }
+    },
+    listsConClick: function(event){
+        var event = event || window.event;
+        var target = event.target;
+        var flag = false;
+        if(target.className == "list"){
+            flag = true;
+        }else if(target.parentNode.parentNode.className="list"){
+            target = target.parentNode.parentNode;
+            flag = true;
+        }
+        if(flag){
+            target.style.color = "blue";
+            var divs = target.parentNode.getElementsByClassName("list");
+            for(var i=0;i<divs.length;i++){
+                if(divs[i] != target){
+                    divs[i].style.color = "black";
+                }
+            }
         }
     },
     operateTransition: {

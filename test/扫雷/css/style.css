@@ -1,0 +1,133 @@
+body {
+  margin: 0 auto;
+  background-color: #66ccff;
+}
+#container {
+  width: 640px;
+  height: 100vh;
+  position: relative;
+}
+#mines-con {
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-template-rows: repeat(10, 30px);
+  grid-gap: 10px;
+}
+.fangkuai {
+  box-shadow: 0 0 10px #666699;
+  background-color: #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+.fangkuai > img {
+  width: 30px;
+  height: 30px;
+}
+#restart-con {
+  width: 640px;
+  height: 100vh;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(200,200,200,0.3);
+}
+#die-info {
+  font-size: 40px;
+  letter-spacing: 10px;
+  color: red;
+  font-weight: bold;
+}
+#restart {
+  width: 100px;
+  height: 40px;
+  display: block;
+  background-color: orange;
+  font-size: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+#restart-div {
+  width: 300px;
+  height: 150px;
+  background-color: #6666ff;
+  border-radius: 10px;
+  box-shadow: 0 0 2px 5px #99ccff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#left-time-con,
+#move-times-con,
+#score-con {
+  width: 90px;
+  height: 50px;
+  /*background-color: rgba(200,200,200,0.7);*/
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#game-info {
+  position: absolute;
+  left: 120px;
+  top: 100px;
+  width: 400px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#left-time-con > img {
+  width: 40px;
+  height: 40px;
+}
+#move-times-con > img {
+  width: 35px;
+  height: 35px;
+}
+#score-con > img  {
+  width: 45px;
+  height: 45px;
+}
+#left-time,
+#move-times,
+#score {
+  color: white;
+  font-size: 30px;
+}
+#mode-con {
+  position: absolute;
+  top: 700px;
+  left: 120px;
+  width: 400px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#mode-con > span {
+  transition: all 0.3s;
+}
+.choose {
+  font-size: 40px;
+  color: red;
+  text-shadow: 2px 2px 5px white;
+}
+.un-choose {
+  font-size: 25px;
+  color: gray;
+}

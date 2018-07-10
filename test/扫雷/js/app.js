@@ -18,9 +18,9 @@ var leftTime = document.getElementById("left-time");
 var maxMinesNum = 5;  //周围八个格中雷的最多个数
 var minesPos = [];
 var size = 10;
-var minesNum = 4;
+var minesNum = 18;
 var mines = [];
-var gameTime = 20;
+var gameTime = 180;
 var isSetFlag = false;    // 是否处于标旗状态
 var moveNum = 0;
 var inter;      // 倒计时计时器
@@ -50,7 +50,7 @@ function init(){
   scoreNum = 0;
   inter = 0;
   // console.log(mines);
-  // createLeftTime(gameTime);
+  createLeftTime(gameTime);
 }
 
 // 事件监听
